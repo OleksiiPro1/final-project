@@ -3,13 +3,13 @@ import { css } from '@emotion/react';
 import Link from 'next/link';
 
 const footerDivStyles = css`
-    background: #29293a;
+    background: #1d1d23;
 `;
 export default function Footer() {
   return (
     <footer css={footerDivStyles}>
       <div >
-<h1>11sdfsagddfgsdfg1</h1>
+<h1>footer</h1>
           <br />
 
 
