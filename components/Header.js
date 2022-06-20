@@ -7,7 +7,7 @@ font-weight: bold;
 `;
 const headerStyles = css`
   padding: 15px 60px;
-  background: #29293a;
+  background: black;
 
   display: flex;
   justify-content: space-between;
@@ -28,12 +28,14 @@ export default function Header() {
         <Link href="/">MISSION REACT</Link>
       </div>
       <div>
-        <Link href="/">HTML</Link>
-        <Link href="/">CSS</Link>
-        <Link href="/">JAVASCRIPT</Link>
-        <Link href="/">REACT</Link>
+      <Link href="/courses">Courses</Link>
+        <Link href="/courses/1">HTML</Link>
+        <Link href="/courses/2">CSS</Link>
+        <Link href="/courses/3">JAVASCRIPT</Link>
+        <Link href="/courses/4">REACT</Link>
 
       </div>
+
     </header>
   );
 }
