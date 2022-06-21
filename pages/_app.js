@@ -39,6 +39,28 @@ function MyApp({ Component, pageProps }) {
             background: white;
             color: black;
           }
+
+          img.rot {
+            animation: 3s linear 0s normal none infinite running rot;
+            -webkit-animation: 100s linear 0s normal none infinite running rot;
+            width: 100px;
+          }
+          @keyframes rot {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+          @-webkit-keyframes rot {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          }
         `}
       />
       <Layout>

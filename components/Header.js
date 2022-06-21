@@ -4,11 +4,12 @@ import Link from 'next/link';
 
 const headerLogoStyles = css`
 font-weight: bold;
+z-index: 2;
 `;
 const headerStyles = css`
   padding: 15px 60px;
   background: black;
-
+  z-index: 1;
   display: flex;
   justify-content: space-between;
 
@@ -25,7 +26,7 @@ export default function Header() {
   return (
     <header css={headerStyles}>
       <div css={headerLogoStyles}>
-        <Link href="/">MISSION REACT</Link>
+        <Link href="/">MI$$ION REACT</Link>
       </div>
       <div>
       <Link href="/courses">Courses</Link>
