@@ -4,6 +4,10 @@ import Head from 'next/head';
 import Image from 'next/image';
 import VideoComponent from './component/VideoComponentCart.js';
 
+const mainH2 = css`
+text-align: center;
+color: white;
+`;
 const mainH1 = css`
 text-align: center;
 color: white;
@@ -34,6 +38,7 @@ export default function Courses() {
       <div css={mainVideoDiv}>
         <VideoComponent />
       </div>
+      <div   css={mainH2}><h2>Please add the course</h2></div>
     </div>
   );
 }

@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
           * {
             box-sizing: border-box;
           }
-
+          
           .grow {
             transition: all 1s;
           }
@@ -62,6 +62,7 @@ function MyApp({ Component, pageProps }) {
             }
           }
         `}
+
       />
       <Layout>
         <Component {...pageProps} />

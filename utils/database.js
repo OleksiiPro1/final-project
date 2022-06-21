@@ -5,26 +5,26 @@ console.log(fs);
 export const missionReactDatabase = [
   {
     id: '1',
-    planet: 'HTML',
-    price: '100 $',
-    description: 'Welcome to planet HTML',
+    planet: 'HTML planet',
+    price: '100',
+    description: 'Welcome to planet HTML. For all human',
   },
   {
     id: '2',
-    planet: 'CSS',
-    price: '200 $',
-    description: 'Welcome to planet CSS',
+    planet: 'CSS planet',
+    price: '200',
+    description: 'Welcome to planet CSS. For human who know HTML',
   },
   {
     id: '3',
-    planet: 'JAVASCRIPT',
-    price: '600 $',
-    description: 'Welcome to planet JAVASCRIPT',
+    planet: 'JAVASCRIPT planet',
+    price: '600',
+    description: 'Welcome to planet JAVASCRIPT. For human who know HTML, CSS',
   },
   {
     id: '4',
-    planet: 'REACT',
-    price: '500 $',
-    description: 'Welcome to planet REACT',
+    planet: 'REACT planet',
+    price: '500',
+    description: 'Welcome to planet REACT. For human who know HTML, CSS, JAVASCRIPT',
   }
 ];

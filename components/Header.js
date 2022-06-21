@@ -29,12 +29,12 @@ export default function Header() {
         <Link href="/">MI$$ION REACT</Link>
       </div>
       <div>
-      <Link href="/courses">Courses</Link>
+
         <Link href="/courses/1">HTML</Link>
         <Link href="/courses/2">CSS</Link>
         <Link href="/courses/3">JAVASCRIPT</Link>
         <Link href="/courses/4">REACT</Link>
-
+        <Link href="/cart">Cart</Link>
       </div>
 
     </header>
