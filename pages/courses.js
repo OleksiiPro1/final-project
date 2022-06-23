@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import Head from 'next/head';
-import { missionReactDatabase } from '../utils/database';
+import { missionReactDatabase } from '../util/database';
 
 export default function Courses(props) {
   return (
@@ -14,7 +14,8 @@ export default function Courses(props) {
       </Head>
       <h1>Courses</h1>
       <div>
-        {props.mission.map((mission) => { return (
+        {props.mission.map((mission) => {
+          return (
           <div key={` mission-${mission.id}`}>
 <div>planet: {mission.planet}</div>
 <div>price:  {mission.price}</div>
@@ -28,7 +29,7 @@ export default function Courses(props) {
 }
 
 export function getServerSideProps() {
-  
+
   return {
     props: {
       mission: missionReactDatabase,

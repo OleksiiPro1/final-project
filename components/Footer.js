@@ -10,6 +10,7 @@ const ulText = css`
   padding-top: 50px;
   cursor: pointer;
 
+
 `;
 const mainText = css`
   text-align: center;
@@ -23,7 +24,9 @@ const footerDivStyles = css`
   background: black;
 `;
 const footerLinksStyles = css`
-
+display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   background: black;
 `;
 export default function Footer() {
@@ -45,8 +48,9 @@ export default function Footer() {
             <li>REACT</li>
           </Link>
         </ul>
-        </div>
-        <div  css={footerLinksStyles} >
+
+        
+
         <ul css={ulText}>
           <Link href="/">
             <li>MI$$ION REACT</li>
@@ -67,7 +71,8 @@ export default function Footer() {
 
 
       </div>
-      <br /><br />
+      <hr />
+      <br />
       <div css={mainText}>
       <p>© 2022 MISSION REACT. Made in Vienna</p>
         <br />

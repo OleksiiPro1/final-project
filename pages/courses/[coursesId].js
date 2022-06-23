@@ -1,14 +1,16 @@
 // import { useRouter } from 'next/router';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import Cookies from 'js-cookie';
 import Image from 'next/image';
-import { missionReactDatabase } from '../../utils/database';
+import { useEffect, useState } from 'react';
+import { missionReactDatabase } from '../../util/database';
 
 const buttonDiv = css`
-margin-top: 20px;
-margin-bottom: 20px;
-text-align: center;
-color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
 `;
 const buttonContent = css`
   align-content: center;
@@ -36,6 +38,39 @@ const img404 = css`
 `;
 
 export default function Mission(props) {
+  const [isInCart, setIsInCart] = useState(false);
+  const [addCounter, setAddCounter] = useState(0);
+  useEffect(() => {
+
+    const currentCart = Cookies.get('cart')
+    ? JSON.parse(Cookies.get('cart'))
+    : [];
+
+
+  if(currentCart.find((courseInCart) => props.courses.id === courseInCart.id)) {
+
+    setIsInCart(true)
+
+  } else {
+
+    setIsInCart(false);
+  }
+
+  }, [props.courses.id]);
+
+  useEffect(() => {
+    const currentCart = Cookies.get('cart')
+                ? JSON.parse(Cookies.get('cart'))
+                : [];
+                const currentCourseInCart = currentCart.find((courseInCart) => props.courses.id === courseInCart.id);
+
+                if (currentCourseInCart) {
+                  setAddCounter(currentCourseInCart.addCounter);
+                }
+  },[props.courses.id])
+
+
+
   if (!props.courses) {
     return (
       <div css={img404}>
@@ -60,8 +95,6 @@ export default function Mission(props) {
     );
   }
 
-  // const router = useRouter()
-  //  const { missionId } = router.query;
   return (
     <div>
       <div>
@@ -77,10 +110,57 @@ export default function Mission(props) {
       </div>
 
       <div css={buttonDiv}>
-
         <div>{props.courses.description}</div>
         <div css={buttonDiv}>
-          <button  css={buttonContent}>I like it!</button>
+          <button
+            onClick={() => {
+
+              console.log(Cookies.get('cart'));
+
+              const currentCart = Cookies.get('cart')
+                ? JSON.parse(Cookies.get('cart'))
+                : [];
+              let newCart;
+
+              if(currentCart.find((courseInCart) => props.courses.id === courseInCart.id)) {
+                newCart = currentCart.filter((courseInCart) => courseInCart.id !== props.courses.id);
+                setIsInCart(false);
+
+              } else {
+                newCart = [...currentCart, {id: props.courses.id, addCounter: 0 }];
+                setIsInCart(true);
+              }
+
+              Cookies.set('cart', JSON.stringify(newCart));
+            }}
+            css={buttonContent}
+          >
+
+   {isInCart ? 'remove from cart' : 'add to cart'}
+
+          </button>
+          <br />
+            {isInCart ? (
+            <>
+             {addCounter}
+             <button
+             onClick={() => {
+              setAddCounter(addCounter +1)
+              const currentCart = Cookies.get('cart')
+                ? JSON.parse(Cookies.get('cart'))
+                : [];
+                const currentCourseInCart = currentCart.find((courseInCart) => props.courses.id === courseInCart.id);
+                currentCourseInCart.addCounter += 1;
+                Cookies.set('cart', JSON.stringify(currentCart));
+
+            }}
+            >
+              add student</button>
+            </>
+            ) : (
+              ''
+            )}
+
         </div>
         <div>Price: {props.courses.price}$</div>
       </div>
@@ -113,17 +193,32 @@ export default function Mission(props) {
 }
 
 export function getServerSideProps(context) {
+
+const currentCart = JSON.parse(context.req.cookies.cart || '[]');
+console.log(currentCart);
+
   const foundCourses = missionReactDatabase.find((courses) => {
     return courses.id === context.query.coursesId;
   });
+
+  const currentCourseInCart = currentCart.find((courseInCart) => foundCourses.id === courseInCart.id,
+  );
+
 
   if (!foundCourses) {
     context.res.statusCode = 404;
   }
 
+
+
+  const superCourses = {...foundCourses, ...currentCourseInCart};
+
+  console.log(foundCourses);
+  console.log(superCourses);
+
   return {
     props: {
-      //  missionId: context.query.missionId,
+
       courses: foundCourses || null,
     },
   };
