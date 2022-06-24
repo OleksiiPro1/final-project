@@ -3,7 +3,8 @@
 import { css } from '@emotion/react';
 import Cookies from 'js-cookie';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { getParsedCookie, setStringifiedCookie } from '../../util/cookies';
 import { missionReactDatabase } from '../../util/database';
 
 const buttonDiv = css`
@@ -38,8 +39,10 @@ const img404 = css`
 `;
 
 export default function Mission(props) {
-  const [isInCart, setIsInCart] = useState(false);
-  const [addCounter, setAddCounter] = useState(0);
+  const [isInCart, setIsInCart] = useState('addCounter' in props.courses);
+  const [addCounter, setAddCounter] = useState(props.courses.addCounter || 0);
+
+  /*
   useEffect(() => {
 
     const currentCart = Cookies.get('cart')
@@ -67,7 +70,8 @@ export default function Mission(props) {
                 if (currentCourseInCart) {
                   setAddCounter(currentCourseInCart.addCounter);
                 }
-  },[props.courses.id])
+  },[props.courses.id]);
+  */
 
 
 
@@ -115,23 +119,24 @@ export default function Mission(props) {
           <button
             onClick={() => {
 
-              console.log(Cookies.get('cart'));
+
 
               const currentCart = Cookies.get('cart')
-                ? JSON.parse(Cookies.get('cart'))
+                ? getParsedCookie ('cart')
                 : [];
               let newCart;
 
               if(currentCart.find((courseInCart) => props.courses.id === courseInCart.id)) {
                 newCart = currentCart.filter((courseInCart) => courseInCart.id !== props.courses.id);
                 setIsInCart(false);
-
+                setAddCounter(0);
               } else {
                 newCart = [...currentCart, {id: props.courses.id, addCounter: 0 }];
                 setIsInCart(true);
               }
 
-              Cookies.set('cart', JSON.stringify(newCart));
+
+              setStringifiedCookie('cart', newCart);
             }}
             css={buttonContent}
           >
@@ -147,15 +152,16 @@ export default function Mission(props) {
              onClick={() => {
               setAddCounter(addCounter +1)
               const currentCart = Cookies.get('cart')
-                ? JSON.parse(Cookies.get('cart'))
-                : [];
+              ? getParsedCookie ('cart')
+              : [];
                 const currentCourseInCart = currentCart.find((courseInCart) => props.courses.id === courseInCart.id);
                 currentCourseInCart.addCounter += 1;
-                Cookies.set('cart', JSON.stringify(currentCart));
 
+                setStringifiedCookie('cart', currentCart);
             }}
             >
-              add student</button>
+              add student
+              </button>
             </>
             ) : (
               ''
@@ -195,7 +201,7 @@ export default function Mission(props) {
 export function getServerSideProps(context) {
 
 const currentCart = JSON.parse(context.req.cookies.cart || '[]');
-console.log(currentCart);
+// console.log(currentCart);
 
   const foundCourses = missionReactDatabase.find((courses) => {
     return courses.id === context.query.coursesId;
@@ -213,13 +219,13 @@ console.log(currentCart);
 
   const superCourses = {...foundCourses, ...currentCourseInCart};
 
-  console.log(foundCourses);
-  console.log(superCourses);
-
+  // console.log(foundCourses);
+  // console.log(superCourses);
+// 2
   return {
     props: {
 
-      courses: foundCourses || null,
+      courses: /* foundCourses */ superCourses || null,
     },
   };
 }
