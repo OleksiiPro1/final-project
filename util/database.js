@@ -1,7 +1,24 @@
 import fs from 'node:fs';
+import camelCase from 'camelcase-keys';
+import { config } from 'dotenv-safe';
+
+// import postgres from 'postgres';
 
 console.log(fs);
 // #region
+/*
+config();
+const sql = postgres();
+export async function getCourses(id) {
+
+
+ const courses = await sql`
+SELECT * FROM courses
+WHERE id = ${id}
+`;
+return courses.map((courses) => camelCase(courses));
+}
+*/
 export const missionReactDatabase = [
   {
     id: '1',

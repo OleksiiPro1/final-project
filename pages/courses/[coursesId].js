@@ -3,7 +3,7 @@
 import { css } from '@emotion/react';
 import Cookies from 'js-cookie';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getParsedCookie, setStringifiedCookie } from '../../util/cookies';
 import { missionReactDatabase } from '../../util/database';
 
@@ -13,6 +13,7 @@ const buttonDiv = css`
   text-align: center;
   color: white;
 `;
+
 const buttonContent = css`
   align-content: center;
   font-size: 14px;
@@ -20,7 +21,8 @@ const buttonContent = css`
   background-color: white;
   color: black;
   border: 2px solid gray;
-  margin-top: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   margin-right: 5px;
   margin-left: 5px;
 `;
@@ -42,7 +44,7 @@ export default function Mission(props) {
   const [isInCart, setIsInCart] = useState('addCounter' in props.courses);
   const [addCounter, setAddCounter] = useState(props.courses.addCounter || 0);
 
-  /*
+
   useEffect(() => {
 
     const currentCart = Cookies.get('cart')
@@ -71,8 +73,6 @@ export default function Mission(props) {
                   setAddCounter(currentCourseInCart.addCounter);
                 }
   },[props.courses.id]);
-  */
-
 
 
   if (!props.courses) {
@@ -118,55 +118,61 @@ export default function Mission(props) {
         <div css={buttonDiv}>
           <button
             onClick={() => {
-
-
-
               const currentCart = Cookies.get('cart')
-                ? getParsedCookie ('cart')
+                ? getParsedCookie('cart')
                 : [];
               let newCart;
 
-              if(currentCart.find((courseInCart) => props.courses.id === courseInCart.id)) {
-                newCart = currentCart.filter((courseInCart) => courseInCart.id !== props.courses.id);
+              if (
+                currentCart.find(
+                  (courseInCart) => props.courses.id === courseInCart.id,
+                )
+              ) {
+                newCart = currentCart.filter(
+                  (courseInCart) => courseInCart.id !== props.courses.id,
+                );
                 setIsInCart(false);
                 setAddCounter(0);
               } else {
-                newCart = [...currentCart, {id: props.courses.id, addCounter: 0 }];
+                newCart = [
+                  ...currentCart,
+                  { id: props.courses.id, addCounter: 1 },
+                ];
                 setIsInCart(true);
               }
-
 
               setStringifiedCookie('cart', newCart);
             }}
             css={buttonContent}
           >
-
-   {isInCart ? 'remove from cart' : 'add to cart'}
-
+            {isInCart ? 'remove from cart' : 'add to cart'}
           </button>
           <br />
-            {isInCart ? (
+          {isInCart ? (
             <>
-             {addCounter}
-             <button
-             onClick={() => {
-              setAddCounter(addCounter +1)
-              const currentCart = Cookies.get('cart')
-              ? getParsedCookie ('cart')
-              : [];
-                const currentCourseInCart = currentCart.find((courseInCart) => props.courses.id === courseInCart.id);
-                currentCourseInCart.addCounter += 1;
+              {addCounter}
+              <div>
+                  <button css={buttonContent}
+                onClick={() => {
+                  setAddCounter(addCounter + 1);
+                  const currentCart = Cookies.get('cart')
+                    ? getParsedCookie('cart')
+                    : [];
+                  const currentCourseInCart = currentCart.find(
+                    (courseInCart) => props.courses.id === courseInCart.id,
+                  );
+                  currentCourseInCart.addCounter += 1;
 
-                setStringifiedCookie('cart', currentCart);
-            }}
-            >
-              add student
+                  setStringifiedCookie('cart', currentCart);
+                }}
+              >
+                add student
               </button>
+              </div>
             </>
-            ) : (
-              ''
-            )}
-
+          ) : (
+            ''
+          )}
         </div>
         <div>Price: {props.courses.price}$</div>
       </div>
@@ -199,32 +205,28 @@ export default function Mission(props) {
 }
 
 export function getServerSideProps(context) {
-
-const currentCart = JSON.parse(context.req.cookies.cart || '[]');
-// console.log(currentCart);
+  const currentCart = JSON.parse(context.req.cookies.cart || '[]');
+  // console.log(currentCart);
 
   const foundCourses = missionReactDatabase.find((courses) => {
     return courses.id === context.query.coursesId;
   });
 
-  const currentCourseInCart = currentCart.find((courseInCart) => foundCourses.id === courseInCart.id,
+  const currentCourseInCart = currentCart.find(
+    (courseInCart) => foundCourses.id === courseInCart.id,
   );
-
 
   if (!foundCourses) {
     context.res.statusCode = 404;
   }
 
-
-
-  const superCourses = {...foundCourses, ...currentCourseInCart};
+  const superCourses = { ...foundCourses, ...currentCourseInCart };
 
   // console.log(foundCourses);
   // console.log(superCourses);
-// 2
+  // 2
   return {
     props: {
-
       courses: /* foundCourses */ superCourses || null,
     },
   };

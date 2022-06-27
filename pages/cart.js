@@ -17,7 +17,7 @@ const mainVideoDiv = css`
   margin-left: 200px;
   z-index: -1;
 `;
-export default function Courses() {
+export default function Cart() {
   return (
     <div>
       <Head>

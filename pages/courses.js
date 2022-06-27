@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import Head from 'next/head';
-import { missionReactDatabase } from '../util/database';
+import { getCourses, missionReactDatabase } from '../util/database';
 
 export default function Courses(props) {
   return (
@@ -28,11 +28,11 @@ export default function Courses(props) {
   );
 }
 
-export function getServerSideProps() {
-
+export async function getServerSideProps() {
+const courses = await getCourses();
   return {
     props: {
-      mission: missionReactDatabase,
+      mission: courses,
     },
   };
 }
