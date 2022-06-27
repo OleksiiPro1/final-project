@@ -1,18 +1,28 @@
+const courses = [
+	{planet: 'HTML planet', price: '100', description: 'Welcome to planet HTML. For all human'},
+{planet: 'CSS planet', price: '200', description: 'Welcome to planet CSS. For human who know HTML'},
+{planet: 'JAVASCRIPT planet', price: '600', description: 'Welcome to planet JAVASCRIPT. For human who know HTML, CSS'},
+{planet: 'REACT planet', price: '500', description: 'Welcome to planet REACT. For human who know HTML, CSS, JAVASCRIPT'}
+];
+
 exports.up = async (sql) => {
   await sql`
 INSERT INTO courses
-(planet, price, description)
-VALUES
+${sql(courses, 'planet', 'price', 'description')}
+`;
+};
 
-('HTML planet', '100', 'Welcome to planet HTML. For all human'),
-('CSS planet', '200', 'Welcome to planet CSS. For human who know HTML'),
-('JAVASCRIPT planet', '600', 'Welcome to planet JAVASCRIPT. For human who know HTML, CSS'),
-('REACT planet', '500', 'Welcome to planet REACT. For human who know HTML, CSS, JAVASCRIPT')
- `;
-}
+
 
 exports.down = async (sql) => {
+	for (const course of courses) {
   await sql`
-
+	DELETE FROM
+	courses
+	 WHERE
+	 planet = ${course.planet} AND
+	 price = ${course.price} AND
+	 description = ${course.description}
   `;
+	}
 }
