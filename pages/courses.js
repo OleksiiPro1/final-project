@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import Head from 'next/head';
-import { getCourses, missionReactDatabase } from '../util/database';
+import { getCourses } from '../util/database';
 
 export default function Courses(props) {
   return (

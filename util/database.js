@@ -1,24 +1,42 @@
-import fs from 'node:fs';
 import camelCase from 'camelcase-keys';
 import { config } from 'dotenv-safe';
+import postgres from 'postgres';
 
-// import postgres from 'postgres';
-
-console.log(fs);
-// #region
-/*
 config();
-const sql = postgres();
-export async function getCourses(id) {
 
 
- const courses = await sql`
-SELECT * FROM courses
-WHERE id = ${id}
-`;
-return courses.map((courses) => camelCase(courses));
+function connectOneTimeToDatabase() {
+  if (!globalThis.postgresSqlClient) {
+    globalThis.postgresSqlClient = postgres();
+  }
+  const sql = globalThis.postgresSqlClient;
+  return sql;
 }
-*/
+
+const sql = connectOneTimeToDatabase();
+
+
+
+export async function getCourses() {
+const courses = await sql`
+SELECT * FROM courses
+`;
+return courses.map((course) => camelCase(course));
+}
+
+export async function getCourse(id) {
+  console.log(id)
+  const [course] = await sql`
+  SELECT
+  *
+  FROM
+  courses
+  WHERE
+  id = ${id}
+  `;
+return camelCase(course);
+}
+
 export const missionReactDatabase = [
   {
     id: '1',

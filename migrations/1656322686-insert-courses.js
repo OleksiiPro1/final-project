@@ -1,5 +1,5 @@
 const courses = [
-	{planet: 'HTML planet', price: '100', description: 'Welcome to planet HTML. For all human'},
+{planet: 'HTML planet', price: '100', description: 'Welcome to planet HTML. For all human'},
 {planet: 'CSS planet', price: '200', description: 'Welcome to planet CSS. For human who know HTML'},
 {planet: 'JAVASCRIPT planet', price: '600', description: 'Welcome to planet JAVASCRIPT. For human who know HTML, CSS'},
 {planet: 'REACT planet', price: '500', description: 'Welcome to planet REACT. For human who know HTML, CSS, JAVASCRIPT'}

@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { getParsedCookie, setStringifiedCookie } from '../../util/cookies';
-import { missionReactDatabase } from '../../util/database';
+import { getCourse } from '../../util/database';
 
 const buttonDiv = css`
   margin-top: 20px;
@@ -188,11 +188,11 @@ export default function Mission(props) {
           a frontend application using HTML and CSS.
         </p>
         <p>
-          No matter what… you can’t get better at React if your javascript
+          No matter what… you cant get better at React if your javascript
           fundamental is not clear. During the interviews, it is one of the
           essential skills to learn before moving to react. Javascript is one of
           the most confusing languages for developers and it ignores small
-          errors that can create a problem in your project if you won’t notice
+          errors that can create a problem in your project if you wont notice
           them earlier. So make sure that you first clear your basic concept
           about javascript and then you move to the advanced version of
           ECMAScript5 and ECMAScript6. Some of the topics are given below but
@@ -204,30 +204,45 @@ export default function Mission(props) {
   );
 }
 
-export function getServerSideProps(context) {
-  const currentCart = JSON.parse(context.req.cookies.cart || '[]');
+
+// const currentCart = JSON.parse(context.req.cookies.cart || '[]');
+
+
+
   // console.log(currentCart);
 
-  const foundCourses = missionReactDatabase.find((courses) => {
-    return courses.id === context.query.coursesId;
-  });
+ // const foundCourses = missionReactDatabase.find((courses) => {
+  //  return courses.id === context.query.coursesId;
+// });
 
-  const currentCourseInCart = currentCart.find(
-    (courseInCart) => foundCourses.id === courseInCart.id,
-  );
+  // const currentCourseInCart = currentCart.find(
+ //   (courseInCart) => foundCourses.id === courseInCart.id,
+ // );
 
-  if (!foundCourses) {
-    context.res.statusCode = 404;
-  }
+  // if (!foundCourses) {
+  //  context.res.statusCode = 404;
+  // }
 
-  const superCourses = { ...foundCourses, ...currentCourseInCart };
+  // const superCourses = { ...foundCourses, ...currentCourseInCart };
 
   // console.log(foundCourses);
   // console.log(superCourses);
-  // 2
-  return {
-    props: {
-      courses: /* foundCourses */ superCourses || null,
-    },
+
+
+
+  export async function getServerSideProps(context) {
+    const course = await getCourse(context.query.coursesId)
+    console.log(context.query.coursesId)
+    console.log(course)
+    if (!course) {
+      return {}
+    } else {
+      return {
+        props: {
+          courses: course || null,
+          /* foundCourses */ /* superCourses || null, */
+        },
+    }
+
   };
 }
