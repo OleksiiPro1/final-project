@@ -1,10 +1,16 @@
 import Head from 'next/head';
 import { useState } from 'react';
+import { RegisterResponseBody } from './api/register';
 
 export default function About() {
 
 const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
+const [errors, setErrors] = useState<
+{
+message: string;
+      }[]
+>([]);
 async function registerHundler() {
   const registerResponse = await fetch('/api/register', {
     method: 'POST',
@@ -16,10 +22,13 @@ async function registerHundler() {
     password: password,
   })
   })
-  const registerResponseBody = await registerResponse.json();
+  const registerResponseBody: RegisterResponseBody = await registerResponse.json();
 
 console.log(registerResponseBody);
 
+if ('errors' in registerResponseBody) {
+  setErrors(registerResponseBody.errors)
+}
 
 }
 
@@ -40,7 +49,9 @@ console.log(registerResponseBody);
         Password: <input value={password} onChange={(event) => {setPassword(event.currentTarget.value)}} />
       </label>
       <button onClick={() => registerHundler()}>Register</button>
-
+    {errors.length && errors.map((error) => (
+    <span key={`error${error.message}`}>{error.message}</span> ))
+    }
 
       </main>
     </div>

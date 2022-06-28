@@ -69,8 +69,13 @@ export const missionReactDatabase = [
   }
 ];
 
+type User = {
+  id: number;
+  username: string;
+};
+
 export async function createUser(username: string, passwordHash: string) {
-  const [user] = await sql`
+  const [user] = await sql<[User]>`
 INSERT INTO users
     (username, password_hash)
   VALUES
@@ -80,4 +85,19 @@ INSERT INTO users
     username
   `;
   return camelcaseKeys (user);
+}
+
+export async function getUserByUsername(username: string) {
+  if (!username) return undefined;
+  const [user] = await sql<[User | undefined]>`
+  SELECT
+    id,
+    username
+  FROM
+    users
+  WHERE
+    username = ${username}
+`;
+return user && camelcaseKeys(user);
+
 }
