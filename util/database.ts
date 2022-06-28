@@ -68,3 +68,16 @@ export const missionReactDatabase = [
     description: 'Welcome to planet REACT. For human who know HTML, CSS, JAVASCRIPT',
   }
 ];
+
+export async function createUser(username: string, passwordHash: string) {
+  const [user] = await sql`
+INSERT INTO users
+    (username, password_hash)
+  VALUES
+    (${username}, ${passwordHash})
+  RETURNING
+    id,
+    username
+  `;
+  return camelcaseKeys (user);
+}
