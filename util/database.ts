@@ -1,9 +1,14 @@
 import camelCase from 'camelcase-keys';
+import camelcaseKeys from 'camelcase-keys';
 import { config } from 'dotenv-safe';
 import postgres from 'postgres';
 
 config();
 
+// Type needed for the connection function below
+declare module globalThis {
+  let postgresSqlClient: ReturnType<typeof postgres> | undefined;
+}
 
 function connectOneTimeToDatabase() {
   if (!globalThis.postgresSqlClient) {
@@ -24,7 +29,7 @@ SELECT * FROM courses
 return courses.map((course) => camelCase(course));
 }
 
-export async function getCourse(id) {
+export async function getCourse(id: number) {
   console.log(id)
   const [course] = await sql`
   SELECT

@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import Link from 'next/link';
 
 const headerLogoStyles = css`
+font-size: 120%;
 font-weight: bold;
 z-index: 2;
 `;
@@ -35,6 +36,8 @@ export default function Header() {
         <Link href="/courses/3">JAVASCRIPT</Link>
         <Link href="/courses/4">REACT</Link>
         <Link href="/cart">Cart</Link>
+        <Link href="/register">Register</Link>
+        <Link href="/login">Login</Link>
       </div>
 
     </header>

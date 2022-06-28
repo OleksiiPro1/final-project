@@ -44,36 +44,32 @@ export default function Mission(props) {
   const [isInCart, setIsInCart] = useState('addCounter' in props.courses);
   const [addCounter, setAddCounter] = useState(props.courses.addCounter || 0);
 
-
   useEffect(() => {
-
     const currentCart = Cookies.get('cart')
-    ? JSON.parse(Cookies.get('cart'))
-    : [];
+      ? JSON.parse(Cookies.get('cart'))
+      : [];
 
-
-  if(currentCart.find((courseInCart) => props.courses.id === courseInCart.id)) {
-
-    setIsInCart(true)
-
-  } else {
-
-    setIsInCart(false);
-  }
-
+    if (
+      currentCart.find((courseInCart) => props.courses.id === courseInCart.id)
+    ) {
+      setIsInCart(true);
+    } else {
+      setIsInCart(false);
+    }
   }, [props.courses.id]);
 
   useEffect(() => {
     const currentCart = Cookies.get('cart')
-                ? JSON.parse(Cookies.get('cart'))
-                : [];
-                const currentCourseInCart = currentCart.find((courseInCart) => props.courses.id === courseInCart.id);
+      ? JSON.parse(Cookies.get('cart'))
+      : [];
+    const currentCourseInCart = currentCart.find(
+      (courseInCart) => props.courses.id === courseInCart.id,
+    );
 
-                if (currentCourseInCart) {
-                  setAddCounter(currentCourseInCart.addCounter);
-                }
-  },[props.courses.id]);
-
+    if (currentCourseInCart) {
+      setAddCounter(currentCourseInCart.addCounter);
+    }
+  }, [props.courses.id]);
 
   if (!props.courses) {
     return (
@@ -136,7 +132,7 @@ export default function Mission(props) {
               } else {
                 newCart = [
                   ...currentCart,
-                  { id: props.courses.id, addCounter: 1 },
+                  { id: props.courses.id, addCounter: 0 },
                 ];
                 setIsInCart(true);
               }
@@ -152,22 +148,23 @@ export default function Mission(props) {
             <>
               {addCounter}
               <div>
-                  <button css={buttonContent}
-                onClick={() => {
-                  setAddCounter(addCounter + 1);
-                  const currentCart = Cookies.get('cart')
-                    ? getParsedCookie('cart')
-                    : [];
-                  const currentCourseInCart = currentCart.find(
-                    (courseInCart) => props.courses.id === courseInCart.id,
-                  );
-                  currentCourseInCart.addCounter += 1;
+                <button
+                  css={buttonContent}
+                  onClick={() => {
+                    setAddCounter(addCounter + 1);
+                    const currentCart = Cookies.get('cart')
+                      ? getParsedCookie('cart')
+                      : [];
+                    const currentCourseInCart = currentCart.find(
+                      (courseInCart) => props.courses.id === courseInCart.id,
+                    );
+                    currentCourseInCart.addCounter += 1;
 
-                  setStringifiedCookie('cart', currentCart);
-                }}
-              >
-                add student
-              </button>
+                    setStringifiedCookie('cart', currentCart);
+                  }}
+                >
+                  add student
+                </button>
               </div>
             </>
           ) : (
@@ -204,45 +201,39 @@ export default function Mission(props) {
   );
 }
 
-
 // const currentCart = JSON.parse(context.req.cookies.cart || '[]');
 
+// console.log(currentCart);
 
-
-  // console.log(currentCart);
-
- // const foundCourses = missionReactDatabase.find((courses) => {
-  //  return courses.id === context.query.coursesId;
+// const foundCourses = missionReactDatabase.find((courses) => {
+//  return courses.id === context.query.coursesId;
 // });
 
-  // const currentCourseInCart = currentCart.find(
- //   (courseInCart) => foundCourses.id === courseInCart.id,
- // );
+// const currentCourseInCart = currentCart.find(
+//   (courseInCart) => foundCourses.id === courseInCart.id,
+// );
 
-  // if (!foundCourses) {
-  //  context.res.statusCode = 404;
-  // }
+// if (!foundCourses) {
+//  context.res.statusCode = 404;
+// }
 
-  // const superCourses = { ...foundCourses, ...currentCourseInCart };
+// const superCourses = { ...foundCourses, ...currentCourseInCart };
 
-  // console.log(foundCourses);
-  // console.log(superCourses);
+// console.log(foundCourses);
+// console.log(superCourses);
 
-
-
-  export async function getServerSideProps(context) {
-    const course = await getCourse(context.query.coursesId)
-    console.log(context.query.coursesId)
-    console.log(course)
-    if (!course) {
-      return {}
-    } else {
-      return {
-        props: {
-          courses: course || null,
-          /* foundCourses */ /* superCourses || null, */
-        },
-    }
-
-  };
+export async function getServerSideProps(context) {
+  const course = await getCourse(context.query.coursesId);
+  console.log(context.query.coursesId);
+  console.log(course);
+  if (!course) {
+    return {};
+  } else {
+    return {
+      props: {
+        courses: course || null /* superCourses || null, */,
+        /* foundCourses */
+      },
+    };
+  }
 }
