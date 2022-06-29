@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useState } from 'react';
+import { LoginResponseBody } from './api/login';
 import { errorStyles } from './register';
 
 export default function About() {
@@ -44,7 +45,7 @@ if ('errors' in loginResponseBody) {
 <div>
       <Head>
         <title>Login</title>
-        <meta name="Login" content="About the app" />
+        <meta name="Login" content="Login" />
       </Head>
 
   <main>
