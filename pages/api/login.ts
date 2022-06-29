@@ -1,6 +1,10 @@
+import crypto from 'node:crypto';
 import bcrypt from 'bcrypt';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getUserWithPasswordHashUsername } from '../../util/database';
+import {
+  createSession,
+  getUserWithPasswordHashUsername,
+} from '../../util/database';
 
 export type LoginResponseBody =
   | {
@@ -51,6 +55,12 @@ export default async function handler(
       return;
     }
     const userId = userWithPasswordHashUseWithCaution.id;
+
+
+  const token = crypto.randomBytes(80).toString('base64');
+  const session = await createSession(token, userId);
+  console.log(session);
+
 
     res.status(200).json({ user: { id: userId } });
   } else {

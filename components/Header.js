@@ -38,6 +38,7 @@ export default function Header() {
         <Link href="/cart">Cart</Link>
         <Link href="/register">Register</Link>
         <Link href="/login">Login</Link>
+        <Link href="/users/private-profile">Profile</Link>
       </div>
 
     </header>
