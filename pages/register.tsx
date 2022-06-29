@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { RegisterResponseBody } from './api/register';
 
-const errorStyles = css`
+export const errorStyles = css`
 background-color: yellow;
 margin-left: 10px;
 

@@ -74,6 +74,10 @@ type User = {
   username: string;
 };
 
+type getUserWithPasswordHash = User &  {
+  passwordHash: string;
+}
+
 export async function createUser(username: string, passwordHash: string) {
   const [user] = await sql<[User]>`
 INSERT INTO users
@@ -93,6 +97,20 @@ export async function getUserByUsername(username: string) {
   SELECT
     id,
     username
+  FROM
+    users
+  WHERE
+    username = ${username}
+`;
+return user && camelcaseKeys(user);
+
+}
+
+export async function getUserWithPasswordHashUsername(username: string) {
+  if (!username) return undefined;
+  const [user] = await sql<[getUserWithPasswordHash | undefined]>`
+  SELECT
+    *
   FROM
     users
   WHERE

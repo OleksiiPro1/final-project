@@ -1,6 +1,10 @@
 import bcrypt from 'bcrypt';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { createUser, getUserByUsername } from '../../util/database';
+import {
+  createUser,
+  getUserByUsername,
+  getUserWithPasswordHashUsername,
+} from '../../util/database';
 
 export type RegisterResponseBody =
   | {
@@ -29,9 +33,9 @@ export default async function handler(
       res.status(400).json({ errors: [{ message: 'User name or password not provided' }] });
         return;
     }
-
-    if (await getUserByUsername(req.body.username)) {
-      res.status(400).json({ errors: [{ message: 'User name alredy taken' }] });
+    const user = await getUserWithPasswordHashUsername(req.body.username)
+    if (!user) {
+      res.status(400).json({ errors: [{ message: 'User not found' }] });
       return;
     }
 

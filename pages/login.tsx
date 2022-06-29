@@ -1,16 +1,70 @@
 import Head from 'next/head';
+import { useState } from 'react';
+import { errorStyles } from './register';
 
 export default function About() {
+  const [username, setUsername] = useState('');
+const [password, setPassword] = useState('');
+const [errors, setErrors] = useState<
+{
+message: string;
+      }[]
+>([]);
+
+
+
+async function loginHundler() {
+  const loginResponse = await fetch('/api/login', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json',
+
+  },
+  body: JSON.stringify({
+    username: username,
+    password: password,
+  })
+  })
+  const loginResponseBody: LoginResponseBody = await loginResponse.json();
+
+console.log(loginResponseBody);
+
+if ('errors' in loginResponseBody) {
+  setErrors(loginResponseBody.errors);
+  return;
+}
+
+// await router.push('/');
+
+}
+
+
   return (
-    <div>
+
+<main>
+<div>
       <Head>
         <title>Login</title>
-        <meta name="description" content="About the app" />
+        <meta name="Login" content="About the app" />
       </Head>
 
-      <main>
+  <main>
         <h1>Login</h1>
-      </main>
+
+      <label>
+        Username: <input value={username} onChange={(event) => {setUsername(event.currentTarget.value)}} />
+      </label>
+      <label>
+        Password: <input value={password} onChange={(event) => {setPassword(event.currentTarget.value)}} />
+      </label>
+      <button onClick={() => loginHundler()}>Login</button>
+
+    {errors.length && errors.map((error) => (
+    <span css={errorStyles} key={`error${error.message}`}>{error.message}</span> ))
+    }
+
+  </main>
     </div>
+</main>
+
   );
 }
