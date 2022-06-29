@@ -1,6 +1,5 @@
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
-import Layout from '../../components/Layout';
 import { getUserById, User } from '../../util/database';
 
 type props = {
@@ -26,14 +25,16 @@ export default function UserDetail(props: props) {
   return (
     <div>
       <Head>
-        <title>User</title>
+        <title>{props.user.username}</title>
         <meta name="description" content="About the app" />
       </Head>
 
       <main>
-        <h1>User</h1>
+        <h1>User #{props.user.id} (username: {props.user.username})</h1>
+        <div>id: {props.user.id}</div>
+        <div>username: {props.user.username}</div>
       </main>
-    </div>
+        </div>
   );
 }
 

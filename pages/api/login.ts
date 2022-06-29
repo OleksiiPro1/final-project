@@ -30,7 +30,7 @@ export default async function handler(
       await getUserWithPasswordHashUsername(req.body.username);
     if (!userWithPasswordHashUseWithCaution) {
       res
-        .status(400)
+        .status(401)
         .json({
           errors: [{ message: 'User not found or password is wrong ' }],
         });
@@ -44,7 +44,7 @@ export default async function handler(
 
     if (!passwordMatches) {
       res
-        .status(400)
+        .status(401)
         .json({
           errors: [{ message: 'Password is wrong or user not found ' }],
         });

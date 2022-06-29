@@ -43,6 +43,7 @@ if ('errors' in registerResponseBody) {
 }
 
 await router.push('/cart');
+// await router.push('/users/${registerResponseBody.user.id}');
 
 }
 
