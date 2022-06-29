@@ -1,7 +1,15 @@
+import { css } from '@emotion/react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { RegisterResponseBody } from './api/register';
 
+const errorStyles = css`
+background-color: yellow;
+margin-left: 10px;
+
+
+`;
 export default function About() {
 
 const [username, setUsername] = useState('');
@@ -11,6 +19,9 @@ const [errors, setErrors] = useState<
 message: string;
       }[]
 >([]);
+
+const router = useRouter()
+
 async function registerHundler() {
   const registerResponse = await fetch('/api/register', {
     method: 'POST',
@@ -27,8 +38,11 @@ async function registerHundler() {
 console.log(registerResponseBody);
 
 if ('errors' in registerResponseBody) {
-  setErrors(registerResponseBody.errors)
+  setErrors(registerResponseBody.errors);
+  return;
 }
+
+await router.push('/cart');
 
 }
 
@@ -49,8 +63,9 @@ if ('errors' in registerResponseBody) {
         Password: <input value={password} onChange={(event) => {setPassword(event.currentTarget.value)}} />
       </label>
       <button onClick={() => registerHundler()}>Register</button>
+
     {errors.length && errors.map((error) => (
-    <span key={`error${error.message}`}>{error.message}</span> ))
+    <span css={errorStyles} key={`error${error.message}`}>{error.message}</span> ))
     }
 
       </main>

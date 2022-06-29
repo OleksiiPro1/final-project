@@ -14,6 +14,18 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<RegisterResponseBody>,
 ) {
+
+  if(
+    (typeof req.body.username !== 'string') ||
+  (typeof req.body.password !== 'string') ||
+  !req.body.username ||
+  !req.body.password
+
+  ) {
+    res.status(400).json({ errors: [{ message: 'User name or password not provided' }] });
+      return;
+  }
+
   if (req.method === 'POST') {
     if (await getUserByUsername(req.body.username)) {
       res.status(400).json({ errors: [{ message: 'User name alredy taken' }] });
