@@ -1,6 +1,7 @@
+import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
-import { getUserById, User } from '../../util/database';
+import { getUserByValidSessionToken, User } from '../../util/database';
 
 type props = {
   user?: User;
@@ -17,6 +18,7 @@ export default function UserDetail(props: props) {
         </Head>
         <h1>404 - User not found</h1>
         Better luck next time
+        <br /><br /><br /><br /><br /><br /><br />
 
         </>
   );
@@ -28,21 +30,21 @@ export default function UserDetail(props: props) {
         <title>{props.user.username}</title>
         <meta name="description" content="About the app" />
       </Head>
-
-      <main>
+      <div>
+      <main >
         <h1>User #{props.user.id} (username: {props.user.username})</h1>
         <div>id: {props.user.id}</div>
         <div>username: {props.user.username}</div>
       </main>
-        </div>
+        </div></div>
   );
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 
-
-  const user = await getUserById(1);
+  const user = await getUserByValidSessionToken(context.req.cookies.sessionToken,
+    );
 
 console.log(user);
 

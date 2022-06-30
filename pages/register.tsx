@@ -4,6 +4,9 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { RegisterResponseBody } from './api/register';
 
+const mainStyle = css`
+min-height: 100vh;
+`;
 export const errorStyles = css`
 background-color: yellow;
 margin-left: 10px;
@@ -54,7 +57,7 @@ await router.push('/cart');
         <meta name="description" content="About the app" />
       </Head>
 
-      <main>
+      <main  css={mainStyle}>
         <h1>Register</h1>
 
       <label>

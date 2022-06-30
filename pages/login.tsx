@@ -1,9 +1,13 @@
+import { css } from '@emotion/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { LoginResponseBody } from './api/login';
 import { errorStyles } from './register';
 
+const mainStyle = css`
+min-height: 100vh;
+`;
 export default function About() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -42,7 +46,7 @@ export default function About() {
   }
 
   return (
-    <main>
+    <div css={mainStyle}>
       <div>
         <Head>
           <title>Login</title>
@@ -51,7 +55,7 @@ export default function About() {
 
         <main>
           <h1>Login</h1>
-
+        
           <label>
             Username:{' '}
             <input
@@ -80,6 +84,6 @@ export default function About() {
             ))}
         </main>
       </div>
-    </main>
+    </div>
   );
 }
