@@ -3,6 +3,7 @@
 import { css } from '@emotion/react';
 import Cookies from 'js-cookie';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getParsedCookie, setStringifiedCookie } from '../../util/cookies';
 import { getCourse } from '../../util/database';
@@ -165,6 +166,7 @@ export default function Mission(props) {
                 >
                   add student
                 </button>
+                <Link href="/register">🛒</Link>
               </div>
             </>
           ) : (

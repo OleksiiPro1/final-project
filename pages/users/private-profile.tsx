@@ -46,16 +46,21 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const user = await getUserByValidSessionToken(context.req.cookies.sessionToken,
     );
 
-console.log(user);
 
-if(!user) {
-context.res.statusCode = 404;
-return   {props: {} };
+
+if(user) {
+
+return   {
+  props: {
+    user: user,
+}
+ };
 }
 
   return {
-    props: {
-    user: user,
+    redirect: {
+    destination: '/login?returnTo=/users/private-profile',
+    permanent: false,
 }
   }
 }

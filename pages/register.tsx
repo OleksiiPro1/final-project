@@ -68,7 +68,7 @@ await router.push('/cart');
       </label>
       <button onClick={() => registerHundler()}>Register</button>
 
-    {errors.length && errors.map((error) => (
+    {errors.map((error) => (
     <span css={errorStyles} key={`error${error.message}`}>{error.message}</span> ))
     }
 

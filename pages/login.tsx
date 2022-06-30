@@ -40,7 +40,8 @@ export default function About() {
     ) {
       await router.push(returnTo);
     } else {
-      await router.push(`/users/${loginResponseBody.user.id}`);
+    //  await router.push(`/users/${loginResponseBody.user.id}`);
+    await router.push(`/`);
     }
 
   }
@@ -55,7 +56,7 @@ export default function About() {
 
         <main>
           <h1>Login</h1>
-        
+
           <label>
             Username:{' '}
             <input
@@ -76,8 +77,8 @@ export default function About() {
           </label>
           <button onClick={() => loginHundler()}>Login</button>
 
-          {errors.length &&
-            errors.map((error) => (
+          {/* {errors.length && */}
+            {errors.map((error) => (
               <span css={errorStyles} key={`error${error.message}`}>
                 {error.message}
               </span>
