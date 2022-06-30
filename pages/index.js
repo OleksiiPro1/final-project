@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 import VideoComponent from './component/VideoComponent.js';
 
 const main3Text = css`
@@ -126,7 +127,10 @@ const mainContentDiv = css`
     }
   }
 `;
-export default function Home() {
+export default function Home(props) {
+  useEffect(()=>{
+     props.refreshUserProfile().catch(()=> console.log('refresh user profile Failed') );
+  },[props])
   return (
     <div>
       <Head>

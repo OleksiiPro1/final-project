@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import Link from 'next/link';
+import { productionBrowserSourceMaps } from '../next.config';
 
 const headerLogoStyles = css`
 font-size: 120%;
@@ -23,14 +24,16 @@ const headerStyles = css`
   }
 `;
 
-export default function Header() {
+export default function Header(props) {
   return (
     <header css={headerStyles}>
       <div css={headerLogoStyles}>
         <Link href="/">MI$$ION REACT</Link>
-      </div>
-      <div>
 
+      </div>
+
+      <div>
+      {props.user && props.user.username}
         <Link href="/courses/1">HTML</Link>
         <Link href="/courses/2">CSS</Link>
         <Link href="/courses/3">JAVASCRIPT</Link>
@@ -40,7 +43,7 @@ export default function Header() {
         <Link href="/login">Login</Link>
         <Link href="/logout">Logout</Link>
         <Link href="/users/private-profile">Profile</Link>
-        <Link href="/about">About</Link>
+       {/* <Link href="/about">About</Link> */}
       </div>
 
     </header>

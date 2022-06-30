@@ -8,7 +8,7 @@ import { errorStyles } from './register';
 const mainStyle = css`
 min-height: 100vh;
 `;
-export default function About() {
+export default function login(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<
@@ -40,7 +40,9 @@ export default function About() {
     ) {
       await router.push(returnTo);
     } else {
-    //  await router.push(`/users/${loginResponseBody.user.id}`);
+
+    await props.refreshUserProfile();
+
     await router.push(`/`);
     }
 
