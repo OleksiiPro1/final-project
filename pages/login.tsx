@@ -1,14 +1,34 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { LoginResponseBody } from './api/login';
 import { errorStyles } from './register';
 
-const mainStyle = css`
+type Props = {
+  refreshUserProfile: () => Promise<void>;
+};
+
+const mainHeightStyle = css`
 min-height: 100vh;
 `;
-export default function login(props) {
+
+const mainCatStyle = css`
+margin-top: 30px;
+
+z-index: -1;
+`;
+
+const mainStyle = css`
+min-height: 100vh;
+color: white;
+margin-top: -300px;
+margin-left: 100px;
+position: absolute;
+z-index: 3;
+`;
+export default function login(props: Props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<
@@ -49,24 +69,33 @@ export default function login(props) {
   }
 
   return (
-    <div css={mainStyle}>
+    <div >
       <div>
         <Head>
           <title>Login</title>
           <meta name="Login" content="Login" />
         </Head>
 
-        <main>
+        <main css={mainHeightStyle}>
+          <div css={mainCatStyle}>
+          <Image
+            src="/login_cosmo_cat.png"
+            alt="spaceship"
+            width="457px"
+            height="466px"
+          />
+          </div>
+          <div css={mainStyle}>
           <h1>Login</h1>
 
           <label>
-            Username:{' '}
+            Username:{'  '}
             <input
               value={username}
               onChange={(event) => {
                 setUsername(event.currentTarget.value);
               }}
-            />
+            />{'  '}
           </label>
           <label>
             Password:{' '}
@@ -75,7 +104,7 @@ export default function login(props) {
               onChange={(event) => {
                 setPassword(event.currentTarget.value);
               }}
-            />
+            />{'  '}
           </label>
           <button onClick={() => loginHundler()}>Login</button>
 
@@ -85,6 +114,7 @@ export default function login(props) {
                 {error.message}
               </span>
             ))}
+            </div>
         </main>
       </div>
     </div>

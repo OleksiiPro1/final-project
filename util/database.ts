@@ -187,7 +187,7 @@ export async function deleteSessionByToken(token: string) {
 }
 
 export async function deleteExpiredSession() {
-  const [sessions] = await sql<[Session []]>`
+  const sessions = await sql<[Session []]>`
   DELETE FROM sessions
 
   WHERE expiry_timestamp < now()
