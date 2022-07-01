@@ -20,17 +20,15 @@ function connectOneTimeToDatabase() {
 
 const sql = connectOneTimeToDatabase();
 
-
-
 export async function getCourses() {
-const courses = await sql`
+  const courses = await sql`
 SELECT * FROM courses
 `;
-return courses.map((course) => camelCase(course));
+  return courses.map((course) => camelCase(course));
 }
 
 export async function getCourse(id: number) {
-  console.log(id)
+  console.log(id);
   const [course] = await sql`
   SELECT
   *
@@ -39,7 +37,7 @@ export async function getCourse(id: number) {
   WHERE
   id = ${id}
   `;
-return camelCase(course);
+  return camelCase(course);
 }
 
 export const missionReactDatabase = [
@@ -47,7 +45,7 @@ export const missionReactDatabase = [
     id: '1',
     planet: 'HTML planet',
     price: '100',
-    description: 'Welcome to planet HTML. For all human',
+    description: 'Welcome to planet HTML. For all humans',
   },
   {
     id: '2',
@@ -65,8 +63,9 @@ export const missionReactDatabase = [
     id: '4',
     planet: 'REACT planet',
     price: '500',
-    description: 'Welcome to planet REACT. For human who know HTML, CSS, JAVASCRIPT',
-  }
+    description:
+      'Welcome to planet REACT. For human who know HTML, CSS, JAVASCRIPT',
+  },
 ];
 
 export type User = {
@@ -74,9 +73,9 @@ export type User = {
   username: string;
 };
 
-type getUserWithPasswordHash = User &  {
+type getUserWithPasswordHash = User & {
   passwordHash: string;
-}
+};
 
 export async function createUser(username: string, passwordHash: string) {
   const [user] = await sql<[User]>`
@@ -88,7 +87,7 @@ INSERT INTO users
     id,
     username
   `;
-  return camelcaseKeys (user);
+  return camelcaseKeys(user);
 }
 
 export async function getUserByUsername(username: string) {
@@ -102,8 +101,7 @@ export async function getUserByUsername(username: string) {
   WHERE
     username = ${username}
 `;
-return user && camelcaseKeys(user);
-
+  return user && camelcaseKeys(user);
 }
 
 export async function getUserById(userId: number) {
@@ -117,10 +115,8 @@ export async function getUserById(userId: number) {
   WHERE
     id = ${userId}
 `;
-return user && camelcaseKeys(user);
-
+  return user && camelcaseKeys(user);
 }
-
 
 export async function getUserWithPasswordHashUsername(username: string) {
   if (!username) return undefined;
@@ -132,15 +128,13 @@ export async function getUserWithPasswordHashUsername(username: string) {
   WHERE
     username = ${username}
 `;
-return user && camelcaseKeys(user);
-
+  return user && camelcaseKeys(user);
 }
 
 type Session = {
   id: number;
   token: string;
-
-}
+};
 
 export async function createSession(token: string, userId: User['id']) {
   const [session] = await sql<[Session]>`
@@ -153,11 +147,11 @@ export async function createSession(token: string, userId: User['id']) {
       token
     `;
 
-    return camelcaseKeys(session);
+  return camelcaseKeys(session);
 }
 
 export async function getUserByValidSessionToken(token: string) {
-  if(!token) return undefined;
+  if (!token) return undefined;
 
   const [user] = await sql<[User | undefined]>`
   SELECT
@@ -170,8 +164,7 @@ export async function getUserByValidSessionToken(token: string) {
   sessions.expiry_timestamp > now();
   `;
 
-return user && camelcaseKeys(user);
-
+  return user && camelcaseKeys(user);
 }
 
 export async function deleteSessionByToken(token: string) {
@@ -182,18 +175,16 @@ export async function deleteSessionByToken(token: string) {
   RETURNING *
   `;
 
-
-    return session && camelcaseKeys(session);
+  return session && camelcaseKeys(session);
 }
 
 export async function deleteExpiredSession() {
-  const sessions = await sql<[Session []]>`
+  const sessions = await sql<[Session[]]>`
   DELETE FROM sessions
 
   WHERE expiry_timestamp < now()
   RETURNING *
   `;
 
-return sessions.map((session) => camelCase(session));
-
+  return sessions.map((session) => camelCase(session));
 }

@@ -8,6 +8,13 @@ import { useEffect, useState } from 'react';
 import { getParsedCookie, setStringifiedCookie } from '../../util/cookies';
 import { getCourse } from '../../util/database';
 
+const h1Courses = css`
+margin-top: -430px;
+margin-bottom: 380px;
+margin-left: 60px;
+position: absolute;
+z-index: 5;
+`;
 const buttonDiv = css`
   margin-top: 20px;
   margin-bottom: 20px;
@@ -99,9 +106,6 @@ export default function Mission(props) {
   return (
     <div>
       <div>
-        <h1 css={dinH1}>{props.courses.planet}</h1>
-      </div>
-      <div>
         <Image
           src={`/${props.courses.id}courses2.png`}
           width="1549px"
@@ -109,7 +113,9 @@ export default function Mission(props) {
           alt="courses"
         />
       </div>
-
+      <div css={h1Courses}>
+        <h1 css={dinH1}>{props.courses.planet}</h1>
+      </div>
       <div css={buttonDiv}>
         <div>{props.courses.description}</div>
         <div css={buttonDiv}>
@@ -153,6 +159,7 @@ export default function Mission(props) {
                   css={buttonContent}
                   onClick={() => {
                     setAddCounter(addCounter + 1);
+                    
                     const currentCart = Cookies.get('cart')
                       ? getParsedCookie('cart')
                       : [];
@@ -162,6 +169,7 @@ export default function Mission(props) {
                     currentCourseInCart.addCounter += 1;
 
                     setStringifiedCookie('cart', currentCart);
+
                   }}
                 >
                   add student
