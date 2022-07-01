@@ -28,7 +28,7 @@ margin-left: 100px;
 position: absolute;
 z-index: 3;
 `;
-export default function login(props: Props) {
+export default function Login(props: Props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<
