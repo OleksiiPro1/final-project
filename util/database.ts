@@ -1,4 +1,3 @@
-import camelCase from 'camelcase-keys';
 import camelcaseKeys from 'camelcase-keys';
 import { config } from 'dotenv-safe';
 import postgres from 'postgres';
@@ -24,7 +23,7 @@ export async function getCourses() {
   const courses = await sql`
 SELECT * FROM courses
 `;
-  return courses.map((course) => camelCase(course));
+  return courses.map((course) => camelcaseKeys(course));
 }
 
 export async function getCourse(id: number) {
@@ -37,9 +36,9 @@ export async function getCourse(id: number) {
   WHERE
   id = ${id}
   `;
-  return camelCase(course);
+  return camelcaseKeys(course);
 }
-
+/*
 export const missionReactDatabase = [
   {
     id: '1',
@@ -67,13 +66,13 @@ export const missionReactDatabase = [
       'Welcome to planet REACT. For human who know HTML, CSS, JAVASCRIPT',
   },
 ];
-
+*/
 export type User = {
   id: number;
   username: string;
 };
 
-type getUserWithPasswordHash = User & {
+type  getUserWithPasswordHash = User & {
   passwordHash: string;
 };
 
@@ -186,5 +185,5 @@ export async function deleteExpiredSession() {
   RETURNING *
   `;
 
-  return sessions.map((session) => camelCase(session));
+  return sessions.map((session) => camelcaseKeys(session));
 }

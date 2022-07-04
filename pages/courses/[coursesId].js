@@ -67,9 +67,10 @@ export default function Mission(props) {
   }, [props.courses.id]);
 
   useEffect(() => {
-    const currentCart = Cookies.get('cart')
-      ? JSON.parse(Cookies.get('cart'))
-      : [];
+    const currentCart = Cookies.get('cart') // if expression true, checks if there is data in cookies
+      ? JSON.parse(Cookies.get('cart')) // true
+      : []; // false
+      
     const currentCourseInCart = currentCart.find(
       (courseInCart) => props.courses.id === courseInCart.id,
     );
@@ -159,7 +160,7 @@ export default function Mission(props) {
                   css={buttonContent}
                   onClick={() => {
                     setAddCounter(addCounter + 1);
-                    
+
                     const currentCart = Cookies.get('cart')
                       ? getParsedCookie('cart')
                       : [];

@@ -99,7 +99,7 @@ export default function Login(props: Props) {
           </label>
           <label>
             Password:{' '}
-            <input
+            <input type="password"
               value={password}
               onChange={(event) => {
                 setPassword(event.currentTarget.value);

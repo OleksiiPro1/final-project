@@ -1,15 +1,16 @@
 import { css } from '@emotion/react';
-/** @jsxImportSource @emotion/react */
+import Cookies from 'js-cookie';
 import Head from 'next/head';
 import Image from 'next/image';
-import VideoComponent from './component/VideoComponentCart.js';
+import { useEffect } from 'react';
+import { getCourses } from '../util/database';
+import VideoComponent from './component/VideoComponentCart';
 
-const mainH2 = css`
-text-align: center;
-color: white;
-`;
 const mainH1 = css`
-text-align: center;
+ z-index: 1;
+ position: absolute;
+margin-top: -435px;
+margin-left: 60px;
 color: white;
 `;
 const mainVideoDiv = css`
@@ -17,28 +18,63 @@ const mainVideoDiv = css`
   margin-left: 200px;
   z-index: -1;
 `;
-export default function Cart() {
+
+export default function CoursesList(props) {
+
+
+
+
+  useEffect(() => {
+    const currentCart = Cookies.get('cart')
+      ? JSON.parse(Cookies.get('cart'))
+      : [];
+      console.log(currentCart);
+  }, []);
+
+
   return (
+
     <div>
-      <Head>
+<Head>
         <title>Mission React</title>
 
         <meta name="description" content="Mission React - mission-react.com" />
         <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <div  css={mainH1}><h1>Welcome on board!</h1></div>
+</Head>
       <div>
         <Image
           src="/welcome on board2.png"
           width="1549px"
           height="484px"
           alt="courses"
-        />
-      </div>
-      <div css={mainVideoDiv}>
+        /></div>
+<div css={mainVideoDiv}>
         <VideoComponent />
       </div>
-      <div   css={mainH2}><h2>Please add the course</h2></div>
+<div  css={mainH1}><h1>Welcome on board!</h1></div>
+
+     <ul> {props.courses.map((course) => {
+        return<div key={`course-${course.id}`}>
+
+          <li>{course.planet}</li>
+          <li>{course.price}</li>
+          <li>{course.description}</li>
+
+
+          </div>;
+      })}</ul>
+
     </div>
+
   );
+}
+
+export async function getServerSideProps() {
+  // ✅ Moved out of the component and into getServerSideProps
+  const courses = await getCourses();
+  return {
+    props: {
+      courses: courses,
+    },
+  };
 }
