@@ -3,14 +3,13 @@ import Cookies from 'js-cookie';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect } from 'react';
-import { getCourses } from '../util/database';
 import VideoComponent from './component/VideoComponentCart';
 
 const allText = css`
   color: white;
   list-style-type: none;
   margin-right: 60px;
-  
+
 `;
 
 const mainH1 = css`
@@ -83,12 +82,19 @@ export default function CoursesList(props) {
   );
 }
 
-export async function getServerSideProps() {
-  // ✅ Moved out of the component and into getServerSideProps
-  const courses = await getCourses();
-  return {
-    props: {
-      courses: courses,
-    },
-  };
-}
+export function getServerSideProps(context) {
+
+  const currentCart = JSON.parse(context.req.cookies.cart || '[]');
+ const courseInCart = currentCart.map((item) => {
+    const itemFound = currentCart.find((course) =>course.id === item.id);
+   return { ...itemFound, quantity: item.quantity || 1 };
+   });
+
+
+
+   return {
+     props: {
+       courses: courseInCart,
+     },
+   };
+ }
