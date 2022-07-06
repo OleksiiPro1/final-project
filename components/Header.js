@@ -19,7 +19,7 @@ const headerStyles = css`
   justify-content: space-between;
  position: fixed;
   width: 100%;
-
+  
   z-index: 50;
 
 

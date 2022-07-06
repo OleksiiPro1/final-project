@@ -7,6 +7,7 @@ import { RegisterResponseBody } from './api/register';
 
 const mainHeightStyle = css`
 min-height: 100vh;
+padding-top: 90px;
 `;
 const mainCatStyle = css`
 

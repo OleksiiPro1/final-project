@@ -8,13 +8,14 @@ import { getUserByValidSessionToken, User } from '../../util/database';
 const picStyle = css`
   right: 0px;
   position: fixed;
-  padding-top: 150px;
+  padding-top: 100px;
 `;
 const mainHeightStyle = css`
   min-height: 100vh;
   color: white;
   margin-left: 60px;
   margin-right: 60px;
+  padding-top: 80px;
 `;
 
 type props = {
@@ -50,9 +51,9 @@ export default function UserDetail(props: props) {
       </Head>
       <div>
         <main>
-          <div>
+          <div css={picStyle}>
             <Image
-              css={picStyle}
+
               src="/profile_cosmo_cat.png"
               alt="spaceship"
               width="457px"

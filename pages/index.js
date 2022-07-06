@@ -104,7 +104,7 @@ const mainText = css`
 `;
 const imgContainer2 = css`
   position: absolute;
-  top: 58%;
+  top: 50%;
   left: 80%;
   transform: translate(-50%, -59%);
   animation: animate 4s infinite ease-in-out;
@@ -112,13 +112,14 @@ const imgContainer2 = css`
 `;
 const imgContainer = css`
   position: absolute;
-  top: 35%;
+  top: 40%;
   left: 20%;
   transform: translate(-50%, -55%);
   animation: animate 5s infinite ease-in-out;
   width: 500px;
 `;
 const mainContentDiv = css`
+  padding-top: 40px;
 
   @keyframes animate {
     50% {
@@ -129,9 +130,11 @@ const mainContentDiv = css`
   }
 `;
 export default function Home(props) {
-  useEffect(()=>{
-     props.refreshUserProfile().catch(()=> console.log('refresh user profile Failed') );
-  },[props])
+  useEffect(() => {
+    props
+      .refreshUserProfile()
+      .catch(() => console.log('refresh user profile Failed'));
+  }, [props]);
   return (
     <div>
       <Head>
@@ -182,7 +185,6 @@ export default function Home(props) {
             flexbox, how to write responsive web applications including media
             queries, and how to build a frontend application using HTML and CSS.
           </p>
-
         </div>
 
         <div css={divPlanets}>
@@ -296,7 +298,6 @@ export default function Home(props) {
           </div>
         </div>
         <div css={main4Text}>
-
           <p>
             No matter what… you can’t get better at React if your javascript
             fundamental is not clear. During the interviews, it is one of the

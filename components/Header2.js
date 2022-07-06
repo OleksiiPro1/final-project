@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import Link from 'next/link';
-import { productionBrowserSourceMaps } from '../next.config';
 
 const headerLogoStyles = css`
   font-size: 100%;
@@ -11,7 +10,9 @@ const headerLogoStyles = css`
 const headerStyles = css`
   padding-left: 60px;
   padding-right: 60px;
-  
+  padding-top: 5px;
+  padding-bottom: 5px;
+
   background: #29293a;
   display: flex;
   justify-content: space-between;

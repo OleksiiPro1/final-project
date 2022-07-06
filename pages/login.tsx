@@ -12,6 +12,7 @@ type Props = {
 
 const mainHeightStyle = css`
 min-height: 100vh;
+padding-top: 80px;
 `;
 
 const mainCatStyle = css`

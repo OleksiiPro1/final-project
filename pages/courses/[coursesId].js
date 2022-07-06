@@ -8,6 +8,9 @@ import { useEffect, useState } from 'react';
 import { getParsedCookie, setStringifiedCookie } from '../../util/cookies';
 import { getCourse } from '../../util/database';
 
+const mainDivOfThePage = css`
+padding-top: 90px;
+`;
 const h1Courses = css`
 margin-top: -430px;
 margin-bottom: 380px;
@@ -105,7 +108,7 @@ export default function Mission(props) {
   }
 
   return (
-    <div>
+    <div css={mainDivOfThePage}>
       <div>
         <Image
           src={`/${props.courses.id}courses2.png`}

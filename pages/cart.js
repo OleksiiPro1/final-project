@@ -6,6 +6,9 @@ import { useEffect } from 'react';
 import { getCourses } from '../util/database';
 import VideoComponent from './component/VideoComponentCart';
 
+const allPageCss = css`
+padding-top: 90px;
+`;
 const allPics = css`
 margin-left: -160px;
 `;
@@ -45,6 +48,7 @@ export default function CoursesList(props) {
         <meta name="description" content="Mission React - mission-react.com" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div css={allPageCss}>
       <div>
         <Image
           src="/welcome on board2.png"
@@ -84,6 +88,7 @@ export default function CoursesList(props) {
         })}
       </ul>
 
+    </div>
     </div>
   );
 }
