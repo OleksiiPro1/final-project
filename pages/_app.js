@@ -42,6 +42,39 @@ function MyApp({ Component, pageProps }) {
               Helvetica Neue, sans-serif;
           }
 
+          .container{
+            max-width: 1180px;
+            margin: 0px auto;
+            padding: 0px 10px;
+          }
+
+          .header{
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 50;
+            margin-top: 33px;
+          }
+          .header:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+          .header_body {
+            display: flex;
+          }
+          .header_logo {}
+          .header_burger {}
+          .header_menu {}
+          .header_list {
+            color: white;
+            z-index: 50;
+          }
+
           a {
             color: inherit;
             text-decoration: none;

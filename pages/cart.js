@@ -3,8 +3,12 @@ import Cookies from 'js-cookie';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect } from 'react';
+import { getCourses } from '../util/database';
 import VideoComponent from './component/VideoComponentCart';
 
+const allPics = css`
+margin-left: -160px;
+`;
 const allText = css`
   color: white;
   list-style-type: none;
@@ -61,17 +65,19 @@ export default function CoursesList(props) {
         {props.courses.map((course) => {
           return (
             <div key={`course-${course.id}`}>
-              <li>
+              <li css={allPics}>
                 <Image
                   src={`/${course.id}.png`}
-                  width="100px"
-                  height="100px"
+                  width="300px"
+                  height="300px"
                   alt="courses"
                 />
               </li>
               <li>Course: {course.planet}</li>
               <li>Prise: {course.price}$</li>
               <li>Description: {course.description}</li>
+              <li>Quantity: {course.quantity}</li>
+
               <br /><hr /><br />
             </div>
           );
@@ -82,11 +88,12 @@ export default function CoursesList(props) {
   );
 }
 
-export function getServerSideProps(context) {
-
-  const currentCart = JSON.parse(context.req.cookies.cart || '[]');
- const courseInCart = currentCart.map((item) => {
-    const itemFound = currentCart.find((course) =>course.id === item.id);
+export async function getServerSideProps(context) {
+  const courses = await getCourses() ;
+    console.log(courses);
+  const currentCarts = JSON.parse(context.req.cookies.cart || '[]');
+ const courseInCart = currentCarts.map((item) => {
+    const itemFound = courses.find((course) => course.id === item.id);
    return { ...itemFound, quantity: item.quantity || 1 };
    });
 

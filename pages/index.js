@@ -97,14 +97,14 @@ const main2Text = css`
   margin-bottom: 250px;
 `;
 const mainText = css`
-  margin-top: -750px;
+  margin-top: -700px;
   margin-left: 650px;
   color: white;
   font-size: 12pt;
 `;
 const imgContainer2 = css`
   position: absolute;
-  top: 65%;
+  top: 58%;
   left: 80%;
   transform: translate(-50%, -59%);
   animation: animate 4s infinite ease-in-out;
@@ -119,6 +119,7 @@ const imgContainer = css`
   width: 500px;
 `;
 const mainContentDiv = css`
+
   @keyframes animate {
     50% {
       transform: translate(-50%, -48%);

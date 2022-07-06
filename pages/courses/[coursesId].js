@@ -70,7 +70,7 @@ export default function Mission(props) {
     const currentCart = Cookies.get('cart') // if expression true, checks if there is data in cookies
       ? JSON.parse(Cookies.get('cart')) // true
       : []; // false
-      
+
     const currentCourseInCart = currentCart.find(
       (courseInCart) => props.courses.id === courseInCart.id,
     );

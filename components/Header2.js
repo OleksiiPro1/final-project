@@ -4,16 +4,22 @@ import Link from 'next/link';
 import { productionBrowserSourceMaps } from '../next.config';
 
 const headerLogoStyles = css`
-font-size: 100%;
-font-weight: bold;
-z-index: 2;
+  font-size: 100%;
+  font-weight: bold;
+  z-index: 2;
 `;
 const headerStyles = css`
-  padding: 5px 60px;
+  padding-left: 60px;
+  padding-right: 60px;
+  
   background: #29293a;
-  z-index: 1;
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 55;
 
   > div > a {
     text-decoration: none;
@@ -28,20 +34,22 @@ export default function Header2(props) {
   return (
     <header css={headerStyles}>
       <div css={headerLogoStyles}>
-      {props.user && <Link href="/users/private-profile">{props.user.username}</Link>}
-
+        {props.user && (
+          <Link href="/users/private-profile">{props.user.username}</Link>
+        )}
       </div>
 
       <div>
-
-
-         {/* <Link href="/cart">Cart</Link> */}
+        {/* <Link href="/cart">Cart</Link> */}
         {/* <Link href="/register">Register</Link>  */}
         {/* {props.user && <Link href="/users/private-profile">{props.user.username}</Link>} */}
-        {props.user ? <Link href="/logout">Logout</Link> : <Link href="/login">Login</Link> }
-       {/* <Link href="/about">About</Link> */}
+        {props.user ? (
+          <Link href="/logout">Logout</Link>
+        ) : (
+          <Link href="/login">Login</Link>
+        )}
+        {/* <Link href="/about">About</Link> */}
       </div>
-
     </header>
   );
 }
