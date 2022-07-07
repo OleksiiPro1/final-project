@@ -26,6 +26,7 @@ const buttonDiv = css`
 `;
 
 const buttonContent = css`
+  cursor: pointer;
   align-content: center;
   font-size: 14px;
   padding: 10px 24px;
@@ -53,7 +54,7 @@ const img404 = css`
 
 export default function Mission(props) {
   const [isInCart, setIsInCart] = useState('addCounter' in props.courses);
-  const [addCounter, setAddCounter] = useState(props.courses.addCounter || 0);
+  const [addCounter, setAddCounter] = useState(props.courses.addCounter || 1);
 
   useEffect(() => {
     const currentCart = Cookies.get('cart')
@@ -139,11 +140,11 @@ export default function Mission(props) {
                   (courseInCart) => courseInCart.id !== props.courses.id,
                 );
                 setIsInCart(false);
-                setAddCounter(0);
+                setAddCounter(1);
               } else {
                 newCart = [
                   ...currentCart,
-                  { id: props.courses.id, addCounter: 0 },
+                  { id: props.courses.id, addCounter: 1 },
                 ];
                 setIsInCart(true);
               }
@@ -151,6 +152,7 @@ export default function Mission(props) {
               setStringifiedCookie('cart', newCart);
             }}
             css={buttonContent}
+
           >
             {isInCart ? 'remove from cart' : 'add to cart'}
           </button>
@@ -159,7 +161,7 @@ export default function Mission(props) {
             <>
               {addCounter}
               <div>
-                <button
+                {/* <button
                   css={buttonContent}
                   onClick={() => {
                     setAddCounter(addCounter + 1);
@@ -177,8 +179,8 @@ export default function Mission(props) {
                   }}
                 >
                   add student
-                </button>
-                <Link href="/register">🛒</Link>
+                </button> */}
+                <Link href="/cart"><button css={buttonContent}>Go to cart 🛒</button></Link>
               </div>
             </>
           ) : (

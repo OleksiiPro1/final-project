@@ -1,10 +1,20 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { RegisterResponseBody } from './api/register';
 
+const regStyle = css`
+color: gray ;
+cursor: default;
+`;
+const reg2Style = css`
+color: grey;
+cursor: pointer;
+text-decoration: underline;
+`;
 const mainHeightStyle = css`
 min-height: 100vh;
 padding-top: 90px;
@@ -64,7 +74,7 @@ if ('errors' in registerResponseBody) {
   return;
 }
 await props.refreshUserProfile();
-await router.push('/cart');
+await router.push('/login');
 // await router.push('/users/${registerResponseBody.user.id}');
 
 }
@@ -97,10 +107,19 @@ await router.push('/cart');
       </label>
       <button onClick={() => registerHundler()}>Register</button>
 
+
+
     {errors.map((error) => (
     <span css={errorStyles} key={`error${error.message}`}>{error.message}</span> ))
     }
+
+<div css={regStyle}>
+                  <br />
+                  Already Registered? <Link href="/login"><a css={reg2Style}>Log In Here</a></Link>
+                </div>
+
 </div>
+
       </main>
     </div>
   );

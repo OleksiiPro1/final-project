@@ -18,6 +18,7 @@ const main4Text = css`
   color: white;
 `;
 const buttonPlanet = css`
+cursor: pointer;
   position: relative;
   left: 45%;
   transform: translate(-50%, 0);

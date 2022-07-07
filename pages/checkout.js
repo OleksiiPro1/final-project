@@ -16,7 +16,7 @@ color: white;
 margin-left: 60px;
 margin-bottom: 100px;
 text-align: center;
-
+padding-top: 90px;
 `;
 export default function About() {
   return (
