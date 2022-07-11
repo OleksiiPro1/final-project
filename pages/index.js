@@ -18,7 +18,7 @@ const main4Text = css`
   color: white;
 `;
 const buttonPlanet = css`
-cursor: pointer;
+  cursor: pointer;
   position: relative;
   left: 45%;
   transform: translate(-50%, 0);
@@ -99,25 +99,30 @@ const main2Text = css`
 `;
 const mainText = css`
   margin-top: -700px;
-  margin-left: 650px;
+  text-align: right;
+  margin-right: 60px;
   color: white;
   font-size: 12pt;
+  max-width: 1920px;
+
 `;
 const imgContainer2 = css`
   position: absolute;
-  top: 50%;
+  top: 335px;
   left: 80%;
   transform: translate(-50%, -59%);
   animation: animate 4s infinite ease-in-out;
   width: 350px;
+  max-width: 1200px;
 `;
 const imgContainer = css`
   position: absolute;
-  top: 40%;
+  top: 250px;
   left: 20%;
   transform: translate(-50%, -55%);
   animation: animate 5s infinite ease-in-out;
   width: 500px;
+  max-width: 1200px;
 `;
 const mainContentDiv = css`
   padding-top: 40px;

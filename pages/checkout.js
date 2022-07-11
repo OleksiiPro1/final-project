@@ -2,9 +2,20 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
+import { getCourses } from '../util/database';
 
+const styleButtons = css`
+  cursor: pointer;
+
+  margin-bottom: 50px;
+  border: 2px solid gray;
+  background-color: white;
+  color: black;
+  padding: 8px;
+`;
 const mainCatStyle = css`
-margin-top: -550px;
+margin-top: -600px;
 
 z-index: -1;
 `;
@@ -18,7 +29,10 @@ margin-bottom: 100px;
 text-align: center;
 padding-top: 90px;
 `;
-export default function About() {
+export default function About(props) {
+
+  const [coursesInCart, setCoursesInCart] = useState(props.courses);
+  const totalPrice = coursesInCart.reduce((sum, item) => sum + Number(item.price), 0);
   return (
     <div>
       <Head>
@@ -36,7 +50,7 @@ export default function About() {
           <div className="checkoutFormWrapper">
             <form className="checkoutForm" >
               <div className="personalDetails">
-                <h2> Personal Details</h2>
+                <h3> Personal Details</h3>
                 <label>
 
                   <input
@@ -67,8 +81,8 @@ export default function About() {
                 </label>
               </div>
               <div className="shippingDetails">
-
-                <h2> Payment Information</h2>
+              <br /><br />
+                <h3> Payment Information</h3>
                 <label>
 
                   <input css={inputs}
@@ -102,8 +116,10 @@ export default function About() {
                   />
                 </label>
               </div>
-              <br />
-              <button
+              <br /><br />
+              <h4>Total price: ${totalPrice}</h4>
+
+              <button css={styleButtons}
                 data-test-id="checkout-confirm-order"
                 className="checkoutConfirm"
               >
@@ -124,4 +140,17 @@ export default function About() {
       </main>
     </div>
   );
+}
+export async function getServerSideProps(context) {
+  const courses = await getCourses();
+  const currentCarts = JSON.parse(context.req.cookies.cart || '[]');
+  const courseInCart = currentCarts.map((item) => {
+    const itemFound = courses.find((course) => course.id === item.id);
+    return { ...itemFound, quantity: item.quantity || 1 };
+  });
+return {
+  props: {
+    courses: courseInCart,
+  },
+}
 }

@@ -9,13 +9,15 @@ import { getCourses, getUserByValidSessionToken } from '../util/database';
 import VideoComponent from './component/VideoComponentCart';
 
 const sumStyle = css`
-color: white;
-margin-left: 60px;
-margin-bottom: 60px;
+  color: white;
+  margin: 60px;
+
+  text-align: center;
 `;
 const styleButton = css`
   text-align: center;
   margin-bottom: 20px;
+  margin-top: -20px;
 `;
 const styleButtons = css`
   cursor: pointer;
@@ -30,7 +32,7 @@ const allPageCss = css`
   padding-top: 90px;
 `;
 const allPics = css`
-  margin-left: -160px;
+  margin-left: -90px;
 `;
 const allText = css`
   color: white;
@@ -47,32 +49,17 @@ const mainH1 = css`
 `;
 const mainVideoDiv = css`
   margin-top: -450px;
-  margin-left: 200px;
+  text-align: center;
   z-index: -1;
 `;
 
 export default function CoursesList(props) {
-  console.log(props, 'this is props');
+  // console.log(props, 'this is props');
   const [coursesInCart, setCoursesInCart] = useState(props.courses);
 
   useEffect(() => {
-    Cookies.set('courses', JSON.stringify(coursesInCart))
-  }, [])
-
-  // const updateCart = () => {
-  //   const currentCart = Cookies.get('cart')
-  //     ? JSON.parse(Cookies.get('cart'))
-  //     : [];
-
-  //   setCoursesInCart(currentCart);
-  //   console.log(coursesInCart, 'courses in cart');
-  // }
-
-  // useEffect(() => {
-  //   updateCart();
-  // }, []);
-
-
+    Cookies.set('courses', JSON.stringify(coursesInCart));
+  }, []);
 
   const handleRemove = (courseId) => {
     const filteredCourses = coursesInCart.filter(
@@ -80,11 +67,23 @@ export default function CoursesList(props) {
     );
     setStringifiedCookie('cart', filteredCourses);
     setCoursesInCart(filteredCourses);
-    console.log('coursesInCart log', coursesInCart)
+    console.log('coursesInCart log', coursesInCart);
   };
 
-  const totalPrice = coursesInCart.reduce((sum, item) => sum + Number(item.price), 0);
-  console.log(totalPrice);
+  const totalPrice = coursesInCart.reduce(
+    (sum, item) => sum + Number(item.price),
+    0,
+  );
+
+  // async function handlePurchase() {
+  //   const response = await fetch("/api/session,", {
+  //     method: "POST",
+  //   });
+  //   const data = await response.json();
+
+  //   console.log(data);
+  // }
+
   return (
     <div>
       <Head>
@@ -97,8 +96,8 @@ export default function CoursesList(props) {
         <div>
           <Image
             src="/welcome on board2.png"
-            width="1549px"
-            height="484px"
+            width="2014px"
+            height="629px"
             alt="courses"
           />
         </div>
@@ -108,7 +107,7 @@ export default function CoursesList(props) {
         <div css={mainH1}>
           <h1>Welcome on board!</h1>
         </div>
-        <h3 css={sumStyle}>Total price: ${totalPrice}</h3>
+
         <ul css={allText}>
           {' '}
           {coursesInCart.map((course) => {
@@ -117,8 +116,8 @@ export default function CoursesList(props) {
                 <li css={allPics}>
                   <Image
                     src={`/${course.id}.png`}
-                    width="300px"
-                    height="300px"
+                    width="150px"
+                    height="150px"
                     alt="courses"
                   />
                 </li>
@@ -145,12 +144,14 @@ export default function CoursesList(props) {
         </ul>
       </div>
       <div css={styleButton}>
+        <h3 css={sumStyle}>Total price: ${totalPrice}</h3>
         <button
+          // onClick={() => handlePurchase()}
           css={styleButtons}
           data-test-id="checkout-confirm-order"
           className="checkoutConfirm"
         >
-          <Link href="/checkout">Checkout</Link>
+          <Link href="/checkout">Checkout </Link>
         </button>
       </div>
     </div>

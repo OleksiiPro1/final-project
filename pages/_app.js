@@ -5,28 +5,21 @@ import Layout from '../components/Layout';
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState();
 
-  const refreshUserProfile = useCallback(async()=> {
+  const refreshUserProfile = useCallback(async () => {
     const profileResponse = await fetch('/api/profile');
     const profileResponseBody = await profileResponse.json();
 
-    if(!('errors' in profileResponseBody)) {
-    setUser(profileResponseBody.user);
-        }else {
-          profileResponseBody.errors.forEach((error)=> console.log(error.message) )
-          setUser(undefined);
-        }
-  },[])
-
-
+    if (!('errors' in profileResponseBody)) {
+      setUser(profileResponseBody.user);
+    } else {
+      profileResponseBody.errors.forEach((error) => console.log(error.message));
+      setUser(undefined);
+    }
+  }, []);
 
   useEffect(() => {
-
-
- refreshUserProfile().catch(() => console.log('fetch api failed'));
-
-}, [refreshUserProfile]);
-
-
+    refreshUserProfile().catch(() => console.log('fetch api failed'));
+  }, [refreshUserProfile]);
 
   return (
     <>
@@ -41,14 +34,99 @@ function MyApp({ Component, pageProps }) {
               Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
               Helvetica Neue, sans-serif;
           }
+          // start game *****************************
 
-          .container{
+          #rocket {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            top: 50px;
+            left: 1200px;
+            overflow-x: hidden;
+            transform: rotate(270deg);
+            background-image: url('./rocket.gif');
+            background-size: 40px 40px;
+
+            animation: block 6s infinite linear;
+          }
+          @keyframes block {
+            0% {
+              left: 1200px;
+            }
+
+            100% {
+              left: -20px;
+            }
+          }
+
+          #meteor {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            top: 50px;
+            left: 1200px;
+
+            background-image: url('./meteor.gif');
+            background-size: 40px 40px;
+
+            animation: block 2s 3s 2 linear, block 2s 10s infinite linear;
+          }
+
+          @keyframes block {
+            0% {
+              left: 1200px;
+            }
+
+            100% {
+              left: -20px;
+            }
+          }
+          .circle {
+            position: relative;
+            top: 100px;
+            left: 150px;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-color: blue;
+            /* background-image: url("1.png"); */
+          }
+
+          .jump1 {
+            animation: test 2s linear;
+          }
+
+          @keyframes test {
+            0% {
+              top: 100px;
+              left: 150px;
+            }
+            25% {
+              top: 60px;
+              left: 150px;
+            }
+            50% {
+              top: 20px;
+              left: 150px;
+            }
+            75% {
+              top: 60px;
+              left: 150px;
+            }
+            100% {
+              top: 100px;
+              left: 150px;
+            }
+          }
+
+          // end game **********************************
+          .container {
             max-width: 1180px;
             margin: 0px auto;
             padding: 0px 10px;
           }
 
-          .header{
+          .header {
             position: fixed;
             width: 100%;
             top: 0;
@@ -56,7 +134,7 @@ function MyApp({ Component, pageProps }) {
             z-index: 50;
             margin-top: 33px;
           }
-          .header:before{
+          .header:before {
             content: '';
             position: absolute;
             top: 0;
@@ -67,9 +145,12 @@ function MyApp({ Component, pageProps }) {
           .header_body {
             display: flex;
           }
-          .header_logo {}
-          .header_burger {}
-          .header_menu {}
+          .header_logo {
+          }
+          .header_burger {
+          }
+          .header_menu {
+          }
           .header_list {
             color: white;
             z-index: 50;
@@ -121,10 +202,9 @@ function MyApp({ Component, pageProps }) {
             }
           }
         `}
-
       />
 
-      <Layout user={user} >
+      <Layout user={user}>
         <Component {...pageProps} refreshUserProfile={refreshUserProfile} />
       </Layout>
     </>

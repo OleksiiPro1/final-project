@@ -10,6 +10,17 @@ import { errorStyles } from './register';
 type Props = {
   refreshUserProfile: () => Promise<void>;
 };
+
+const styleButton = css`
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 5px;
+  border: 2px solid gray;
+  background-color: white;
+  color: black;
+  padding-left: 5px;
+  padding-right: 1px;
+`;
 const regStyle = css`
 color: gray ;
 cursor: default;
@@ -109,7 +120,7 @@ export default function Login(props: Props) {
               {'  '}
             </label>
             <label>
-              Password:{' '}
+            {' '}Password:{' '}
               <input
                 type="password"
                 value={password}
@@ -119,7 +130,7 @@ export default function Login(props: Props) {
               />
               {'  '}
             </label>
-            <button onClick={() => loginHundler()}>Login</button>
+            <button css={styleButton} onClick={() => loginHundler()}>Login</button>
 
 
             {/* {errors.length && */}

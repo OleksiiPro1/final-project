@@ -49,7 +49,7 @@ export default function Header(props) {
         <Link href="/courses/2">CSS</Link>
         <Link href="/courses/3">JAVASCRIPT</Link>
         <Link href="/courses/4">REACT</Link>
-        <Link href="/cart">Cart</Link>
+        {/* <Link href="/cart">Cart</Link> */}
         {/* <Link href="/register">Register</Link>  */}
         {/* {props.user && <Link href="/users/private-profile">{props.user.username}</Link>} */}
         {/* {props.user ? <Link href="/logout">Logout</Link> : <Link href="/login">Login</Link> } */}

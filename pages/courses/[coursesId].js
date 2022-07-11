@@ -113,8 +113,8 @@ export default function Mission(props) {
       <div>
         <Image
           src={`/${props.courses.id}courses2.png`}
-          width="1549px"
-          height="484px"
+          width="2014px"
+          height="629px"
           alt="courses"
         />
       </div>

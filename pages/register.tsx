@@ -6,6 +6,16 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { RegisterResponseBody } from './api/register';
 
+const styleButton = css`
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 5px;
+  border: 2px solid gray;
+  background-color: white;
+  color: black;
+  padding-left: 5px;
+  padding-right: 1px;
+`;
 const regStyle = css`
 color: gray ;
 cursor: default;
@@ -103,9 +113,9 @@ await router.push('/login');
         Username: <input value={username} onChange={(event) => {setUsername(event.currentTarget.value)}} />
       </label>
       <label>
-        Password: <input value={password} onChange={(event) => {setPassword(event.currentTarget.value)}} />
+       {' '}Password: <input value={password} onChange={(event) => {setPassword(event.currentTarget.value)}} />
       </label>
-      <button onClick={() => registerHundler()}>Register</button>
+      <button css={styleButton} onClick={() => registerHundler()}>Register</button>
 
 
 
