@@ -18,6 +18,8 @@ const circle = css``;
 export default function Game() {
   const [keyPressed, setKeyPressed] = useState(false);
 
+
+
   return (
     <div
       css={mainStyle}
@@ -27,7 +29,7 @@ export default function Game() {
     >
       <h1> hello world </h1>
       <div className={`circle ${keyPressed ? 'jump1' : ''}`} css={circle} />
-      
+
       <div id="meteor" />
       <div id="rocket" />
     </div>

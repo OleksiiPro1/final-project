@@ -47,7 +47,7 @@ function MyApp({ Component, pageProps }) {
             background-image: url('./rocket.gif');
             background-size: 40px 40px;
 
-            animation: block 6s infinite linear;
+            animation: block 6s 5s infinite linear;
           }
           @keyframes block {
             0% {
@@ -69,7 +69,7 @@ function MyApp({ Component, pageProps }) {
             background-image: url('./meteor.gif');
             background-size: 40px 40px;
 
-            animation: block 2s 3s 2 linear, block 2s 10s infinite linear;
+            animation: block 2s 10s 2 linear, block 2s 20s infinite linear;
           }
 
           @keyframes block {

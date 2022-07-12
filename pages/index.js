@@ -126,6 +126,7 @@ const imgContainer = css`
 `;
 const mainContentDiv = css`
   padding-top: 40px;
+  
 
   @keyframes animate {
     50% {

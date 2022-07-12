@@ -43,13 +43,16 @@ const allText = css`
 const mainH1 = css`
   z-index: 1;
   position: absolute;
-  margin-top: -435px;
+  margin-top: -506px;
   margin-left: 60px;
   color: white;
 `;
 const mainVideoDiv = css`
-  margin-top: -450px;
   text-align: center;
+  max-width: 100%;
+  height: auto;
+  margin-top: -660px;
+
   z-index: -1;
 `;
 

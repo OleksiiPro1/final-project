@@ -4,8 +4,8 @@ class VideoComponent extends React.Component {
   render() {
     return (
       <video
-        width="1152px"
-        height="540px"
+        width="1300px"
+        height="702px"
         preload="auto"
         autoPlay={true}
         loop={true}
