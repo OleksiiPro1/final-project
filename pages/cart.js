@@ -8,6 +8,9 @@ import { setStringifiedCookie } from '../util/cookies';
 import { getCourses, getUserByValidSessionToken } from '../util/database';
 import VideoComponent from './component/VideoComponentCart';
 
+const picStyle = css`
+  text-align: center;
+`;
 const sumStyle = css`
   color: white;
   margin: 60px;
@@ -43,7 +46,7 @@ const allText = css`
 const mainH1 = css`
   z-index: 1;
   position: absolute;
-  margin-top: -506px;
+  margin-top: -34%;
   margin-left: 60px;
   color: white;
 `;
@@ -96,7 +99,7 @@ export default function CoursesList(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div css={allPageCss}>
-        <div>
+        <div css={picStyle}>
           <Image
             src="/welcome on board2.png"
             width="2014px"

@@ -98,13 +98,12 @@ const main2Text = css`
   margin-bottom: 250px;
 `;
 const mainText = css`
-  margin-top: -730px;
+  margin-top: -50%;
   text-align: right;
   margin-right: 60px;
   color: white;
   font-size: 12pt;
   max-width: 1920px;
-
 `;
 const imgContainer2 = css`
   position: absolute;
@@ -126,7 +125,6 @@ const imgContainer = css`
 `;
 const mainContentDiv = css`
   padding-top: 40px;
-
 
   @keyframes animate {
     50% {
