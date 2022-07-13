@@ -98,7 +98,7 @@ const main2Text = css`
   margin-bottom: 250px;
 `;
 const mainText = css`
-  margin-top: -700px;
+  margin-top: -730px;
   text-align: right;
   margin-right: 60px;
   color: white;
@@ -108,7 +108,7 @@ const mainText = css`
 `;
 const imgContainer2 = css`
   position: absolute;
-  top: 335px;
+  top: 375px;
   left: 80%;
   transform: translate(-50%, -59%);
   animation: animate 4s infinite ease-in-out;
@@ -126,7 +126,7 @@ const imgContainer = css`
 `;
 const mainContentDiv = css`
   padding-top: 40px;
-  
+
 
   @keyframes animate {
     50% {

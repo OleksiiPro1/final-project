@@ -51,7 +51,7 @@ const mainVideoDiv = css`
   text-align: center;
   max-width: 100%;
   height: auto;
-  margin-top: -660px;
+  margin-top: -620px;
 
   z-index: -1;
 `;

@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }) {
             background-color: #29293a;
             padding: 0;
             margin: 0;
-            font-family: 'Kdam Thmor Pro', -apple-system, BlinkMacSystemFont,
+            font-family:  -apple-system, BlinkMacSystemFont,
               Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
               Helvetica Neue, sans-serif;
           }
@@ -43,8 +43,8 @@ function MyApp({ Component, pageProps }) {
             top: 50px;
             left: 1200px;
             overflow-x: hidden;
-            transform: rotate(270deg);
-            background-image: url('./rocket.gif');
+
+            background-image: url('./meteor.gif');
             background-size: 40px 40px;
 
             animation: block 6s 5s infinite linear;
@@ -69,7 +69,7 @@ function MyApp({ Component, pageProps }) {
             background-image: url('./meteor.gif');
             background-size: 40px 40px;
 
-            animation: block 2s 10s 2 linear, block 2s 20s infinite linear;
+            animation: block 3s 10s 2 linear, block 3s 20s infinite linear;
           }
 
           @keyframes block {
@@ -84,12 +84,16 @@ function MyApp({ Component, pageProps }) {
           .circle {
             position: relative;
             top: 100px;
-            left: 150px;
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
-            background-color: blue;
-            /* background-image: url("1.png"); */
+            left: 350px;
+            height: 103px;
+            width: 187px;
+            /* border-radius: 50%;
+            background-color: blue; */
+            background-image: url('cat-fly.gif');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            // transform: rotate(90deg);
           }
 
           .jump1 {
@@ -99,23 +103,73 @@ function MyApp({ Component, pageProps }) {
           @keyframes test {
             0% {
               top: 100px;
-              left: 150px;
+              left: 350px;
             }
             25% {
               top: 60px;
-              left: 150px;
+              left: 350px;
             }
             50% {
               top: 20px;
-              left: 150px;
+              left: 350px;
             }
             75% {
               top: 60px;
-              left: 150px;
+              left: 350px;
             }
             100% {
               top: 100px;
-              left: 150px;
+              left: 350px;
+            }
+          }
+
+          #main-nlo {
+            position: relative;
+            top: -280px;
+            left: 680px;
+            height: 480px;
+            width: 270px;
+            /* border-radius: 50%;
+            background-color: blue; */
+            background-image: url('main-nlo.gif');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+          #dim-nlo {
+            position: relative;
+            top: -600px;
+            left: 650px;
+            height: 480px;
+            width: 360px;
+            /* border-radius: 50%;
+            background-color: blue; */
+            background-image: url('dim-nlo.gif');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transform: rotate(180deg);
+          }
+          #vrag1 {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            top: 30px;
+            left: 900px;
+
+            background-image: url('./vrag1.gif');
+            background-size: 80px 80px;
+
+            animation: block 5s 10s infinite linear;
+          }
+
+          @keyframes block {
+            0% {
+              left: 900px;
+            }
+
+            100% {
+              left: -20px;
             }
           }
 
