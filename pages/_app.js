@@ -30,25 +30,105 @@ function MyApp({ Component, pageProps }) {
             background-color: #29293a;
             padding: 0;
             margin: 0;
-            font-family:  -apple-system, BlinkMacSystemFont,
-              Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-              Helvetica Neue, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+              Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+              sans-serif;
           }
           // start game *****************************
-
-          #rocket {
-            width: 40px;
-            height: 40px;
+          #star {
+            width: 2px;
+            height: 2px;
             position: relative;
-            top: 50px;
+            top: -1100px;
             left: 1200px;
-            overflow-x: hidden;
-
-            background-image: url('./meteor.gif');
-            background-size: 40px 40px;
-
-            animation: block 6s 5s infinite linear;
+            background-color: white;
+            background-size: 2px 2px;
+            animation: block 2s 0.4s infinite linear;
           }
+
+          @keyframes block {
+            0% {
+              left: 1200px;
+            }
+
+            100% {
+              left: -20px;
+            }
+          }
+          #star2 {
+            width: 4px;
+            height: 2px;
+            position: relative;
+            top: -950px;
+            left: 1200px;
+            background-color: white;
+            background-size: 4px 2px;
+            animation: block 2.2s 0.3s infinite linear;
+          }
+
+          @keyframes block {
+            0% {
+              left: 1200px;
+            }
+
+            100% {
+              left: -20px;
+            }
+          }
+
+          #star3 {
+            width: 4px;
+            height: 2px;
+            position: relative;
+            top: -980px;
+            left: 1200px;
+            background-color: white;
+            background-size: 4px 2px;
+            animation: block 1.3s 0.6s infinite linear;
+          }
+
+          @keyframes block {
+            0% {
+              left: 1200px;
+            }
+
+            100% {
+              left: -20px;
+            }
+          }
+
+          #star4 {
+            width: 4px;
+            height: 2px;
+            position: relative;
+            top: -850px;
+            left: 1200px;
+            background-color: white;
+            background-size: 4px 2px;
+            animation: block 1.7s 0.7s infinite linear;
+          }
+
+          @keyframes block {
+            0% {
+              left: 1200px;
+            }
+
+            100% {
+              left: -20px;
+            }
+          }
+
+          #star5 {
+            width: 4px;
+            height: 2px;
+            position: relative;
+            top: -800px;
+            left: 1200px;
+            background-color: white;
+            background-size: 4px 2px;
+            animation: block 1.9s 0.9s infinite linear;
+          }
+
           @keyframes block {
             0% {
               left: 1200px;
@@ -63,13 +143,13 @@ function MyApp({ Component, pageProps }) {
             width: 40px;
             height: 40px;
             position: relative;
-            top: 50px;
+            top: -100px;
             left: 1200px;
 
             background-image: url('./meteor.gif');
             background-size: 40px 40px;
 
-            animation: block 3s 10s 2 linear, block 3s 20s infinite linear;
+            animation: block 12s 10s 1 linear;
           }
 
           @keyframes block {
@@ -78,12 +158,13 @@ function MyApp({ Component, pageProps }) {
             }
 
             100% {
-              left: -20px;
+              left: 20px;
             }
           }
+
           .circle {
             position: relative;
-            top: 100px;
+            top: 250px;
             left: 350px;
             height: 103px;
             width: 187px;
@@ -93,7 +174,7 @@ function MyApp({ Component, pageProps }) {
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            // transform: rotate(90deg);
+            transform: rotate(345deg);
           }
 
           .jump1 {
@@ -102,31 +183,31 @@ function MyApp({ Component, pageProps }) {
 
           @keyframes test {
             0% {
-              top: 100px;
+              top: 250px;
               left: 350px;
             }
             25% {
-              top: 60px;
+              top: 190px;
               left: 350px;
             }
             50% {
-              top: 20px;
+              top: 150px;
               left: 350px;
             }
             75% {
-              top: 60px;
+              top: 190px;
               left: 350px;
             }
             100% {
-              top: 100px;
+              top: 250px;
               left: 350px;
             }
           }
 
           #main-nlo {
             position: relative;
-            top: -280px;
-            left: 680px;
+            top: -370px;
+            left: 870px;
             height: 480px;
             width: 270px;
             /* border-radius: 50%;
@@ -138,8 +219,8 @@ function MyApp({ Component, pageProps }) {
           }
           #dim-nlo {
             position: relative;
-            top: -600px;
-            left: 650px;
+            top: -690px;
+            left: 835px;
             height: 480px;
             width: 360px;
             /* border-radius: 50%;
@@ -150,26 +231,30 @@ function MyApp({ Component, pageProps }) {
             background-position: center;
             transform: rotate(180deg);
           }
+
           #vrag1 {
             width: 80px;
             height: 80px;
             position: relative;
-            top: 30px;
-            left: 900px;
+            top: 160px;
+            left: 970px;
 
             background-image: url('./vrag1.gif');
             background-size: 80px 80px;
 
-            animation: block 5s 10s infinite linear;
+            animation: block 5s 5s 1 linear, block 4s 11s 1 linear,
+              block 3s 17s 1 linear, block 2s 26s 1 linear,
+              block 1s 32s 1 linear, block 5s 38s 1 linear,
+              block 5s 44s 1 linear, block 5s 50s infinite linear;
           }
 
           @keyframes block {
             0% {
-              left: 900px;
+              left: 970px;
             }
 
             100% {
-              left: -20px;
+              left: 20px;
             }
           }
 
