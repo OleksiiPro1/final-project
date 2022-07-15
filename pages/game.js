@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 const score = css`
-  margin-top: -590px;
+  margin-top: -600px;
 `;
 const mainUnitStyle = css`
   z-index: 6;
@@ -17,6 +17,7 @@ const unitStyle = css`
   z-index: 5;
 `;
 const bgStyle = css`
+  cursor: crosshair;
   background-color: black;
   text-align: center;
 `;
@@ -42,35 +43,36 @@ const mainStyle = css`
 
 export default function Game() {
   const [circleCords, setCircleCords] = useState({ x: 350, y: 250 });
-  const [enemyCords, setEnemyCords] = useState({ x: 970, y: 250 });
+  const [enemyCords, setEnemyCords] = useState({ x: 1070, y: 250 });
   const [count, setCount] = useState(0);
   const [keyPressed, setKeyPressed] = useState(false);
   useEffect(() => {
-    let x = 970;
+    let x = 1070;
     setInterval(() => {
       if (x < 0) {
-        x = 970;
+        x = 1070;
       }
       x -= 10;
-      console.log(enemyCords);
+      // console.log(enemyCords);
       setEnemyCords({ ...enemyCords, x });
-    }, 25);
+    }, 28);
   }, []);
   useEffect(() => {
     if (
-      Math.abs(enemyCords.x - circleCords.x) < 120 &&
+      Math.abs(enemyCords.x - circleCords.x) < 100 &&
       circleCords.y === enemyCords.y
     ) {
+      window.location.href = 'http://localhost:3000/gamestart';
       alert('Game over!');
-      setEnemyCords({ x: 970, y: 250 });
+      setEnemyCords({ x: 1070, y: 250 });
     }
   }, [enemyCords.x]);
   const jump = () => {
     const jumpCords = [
       { x: 350, y: 250 },
-      { x: 350, y: 190 },
       { x: 350, y: 150 },
-      { x: 350, y: 190 },
+      { x: 350, y: 50 },
+      { x: 350, y: 150 },
       { x: 350, y: 250 },
     ];
     setCircleCords(jumpCords[0]);
@@ -94,20 +96,20 @@ export default function Game() {
         {/* <Image src="/space-bg.gif" width="820px" height="461px" alt="courses" /> */}
       </div>
       <div css={gameStyle}>
-        {/* <Image
+        <Image
           src="/psp-2000.png"
           width="1600px"
           height="700px"
           alt="courses"
-        /> */}
+        />
         <p css={score}>Score: {count}</p>
       </div>
       <div
         css={mainStyle}
-        onClick={() => {
-          setKeyPressed(true);
-          setTimeout(() => setKeyPressed(false), 2000);
-        }}
+        // onClick={() => {
+        //   setKeyPressed(true);
+        //   setTimeout(() => setKeyPressed(false), 2000);
+        // }}
       >
         <div
           style={{ left: circleCords.x, top: circleCords.y }}
@@ -129,6 +131,29 @@ export default function Game() {
         <div css={unitStyle} id="star4" />
         <div css={unitStyle} id="star5" />
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <br />
       <br />
     </div>

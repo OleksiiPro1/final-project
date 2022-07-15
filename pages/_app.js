@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }) {
             width: 2px;
             height: 2px;
             position: relative;
-            top: -1100px;
+            top: 50px;
             left: 1200px;
             background-color: white;
             background-size: 2px 2px;
@@ -59,7 +59,7 @@ function MyApp({ Component, pageProps }) {
             width: 4px;
             height: 2px;
             position: relative;
-            top: -950px;
+            top: 330px;
             left: 1200px;
             background-color: white;
             background-size: 4px 2px;
@@ -80,7 +80,7 @@ function MyApp({ Component, pageProps }) {
             width: 4px;
             height: 2px;
             position: relative;
-            top: -980px;
+            top: 70px;
             left: 1200px;
             background-color: white;
             background-size: 4px 2px;
@@ -101,7 +101,7 @@ function MyApp({ Component, pageProps }) {
             width: 4px;
             height: 2px;
             position: relative;
-            top: -850px;
+            top: 220px;
             left: 1200px;
             background-color: white;
             background-size: 4px 2px;
@@ -122,7 +122,7 @@ function MyApp({ Component, pageProps }) {
             width: 4px;
             height: 2px;
             position: relative;
-            top: -800px;
+            top: 160px;
             left: 1200px;
             background-color: white;
             background-size: 4px 2px;
@@ -143,7 +143,7 @@ function MyApp({ Component, pageProps }) {
             width: 40px;
             height: 40px;
             position: relative;
-            top: -100px;
+            top: 60px;
             left: 1200px;
 
             background-image: url('./meteor.gif');
@@ -175,7 +175,7 @@ function MyApp({ Component, pageProps }) {
             background-repeat: no-repeat;
             background-position: center;
             transform: rotate(345deg);
-            transition: 0.4s linear;
+            transition: 1s linear;
           }
 
           /* .jump1 {
@@ -206,9 +206,9 @@ function MyApp({ Component, pageProps }) {
           } */
 
           #main-nlo {
-            position: relative;
-            top: -370px;
-            left: 870px;
+            position: absolute;
+            top: -100px;
+            left: 950px;
             height: 480px;
             width: 270px;
             /* border-radius: 50%;
@@ -219,9 +219,9 @@ function MyApp({ Component, pageProps }) {
             background-position: center;
           }
           #dim-nlo {
-            position: relative;
-            top: -690px;
-            left: 835px;
+            position: absolute;
+            top: 60px;
+            left: 920px;
             height: 480px;
             width: 360px;
             /* border-radius: 50%;
@@ -237,8 +237,8 @@ function MyApp({ Component, pageProps }) {
             width: 80px;
             height: 80px;
             position: absolute;
-            top: 160px;
-            left: 970px;
+            /* top: 160px;
+            left: 970px; */
 
             background-image: url('./vrag1.gif');
             background-size: 80px 80px;

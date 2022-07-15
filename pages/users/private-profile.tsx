@@ -159,7 +159,7 @@ export default function UserDetail(props: props) {
               <Link href="http://localhost:3000">Site</Link>
             </li>
             <li>
-              <Link href="http://localhost:3000/game">Game</Link>
+              <Link href="http://localhost:3000/gamestart">Game</Link>
             </li>
           </ul>
         </main>
