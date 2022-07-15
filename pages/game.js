@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { css } from '@emotion/react';
 import Image from 'next/image';
-import { setUncaughtExceptionCaptureCallback } from 'process';
 import { useState } from 'react';
 
+const score = css`
+  margin-top: -590px;
+`;
 const mainUnitStyle = css`
   z-index: 6;
 `;
@@ -39,6 +41,21 @@ const mainStyle = css`
 `;
 
 export default function Game() {
+  // const circle = document.getElementById('circle');
+  // const enemy = document.getElementById('enemy');
+  // let isAlive = setInterval(function () {
+  //   console.log(isAlive);
+  //   let circleTop = parseInt(
+  //     window.getComputedStyle(circle).getPropertyValue('top'),
+  //   );
+  //   let enemyLeft = parseInt(
+  //     window.getComputedStyle(enemy).getPropertyValue('left'),
+  //   );
+  //   if (enemyLeft < 50 && enemyLeft > 0 && circleTop >= 250) {
+  //     alert('Game Over!');
+  //   }
+  // }, 10);
+
   const [count, setCount] = useState(0);
   const [keyPressed, setKeyPressed] = useState(false);
 
@@ -57,11 +74,11 @@ export default function Game() {
       <div css={gameStyle}>
         <Image
           src="/psp-2000.png"
-          width="1800px"
-          height="870px"
+          width="1600px"
+          height="700px"
           alt="courses"
         />
-        <p>Score: {count}</p>
+        <p css={score}>Score: {count}</p>
       </div>
       <div
         css={mainStyle}
@@ -74,7 +91,7 @@ export default function Game() {
           css={mainUnitStyle}
           className={`circle ${keyPressed ? 'jump1' : ''}`}
         />
-        <div css={unitStyle2} id="vrag1" />
+        <div css={unitStyle2} id="enemy" />
         <div css={unitStyle} id="meteor" />
         <div css={unitStyle} id="meteor2" />
         <div css={unitStyle} id="main-nlo" />

@@ -232,7 +232,7 @@ function MyApp({ Component, pageProps }) {
             transform: rotate(180deg);
           }
 
-          #vrag1 {
+          #enemy {
             width: 80px;
             height: 80px;
             position: relative;
