@@ -53,7 +53,6 @@ export default function UserDetail(props: props) {
         <main>
           <div css={picStyle}>
             <Image
-
               src="/profile_cosmo_cat.png"
               alt="spaceship"
               width="457px"
@@ -149,6 +148,18 @@ export default function UserDetail(props: props) {
             <li>
               <Link href="https://html.com/">html.com</Link>
               <br />
+            </li>
+          </ul>
+          <br />
+          <br />
+          <br />
+          <ul>
+            At the end of the course you will have completed sites and games
+            <li>
+              <Link href="http://localhost:3000">Site</Link>
+            </li>
+            <li>
+              <Link href="http://localhost:3000/game">Game</Link>
             </li>
           </ul>
         </main>

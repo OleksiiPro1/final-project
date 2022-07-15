@@ -163,7 +163,7 @@ function MyApp({ Component, pageProps }) {
           }
 
           .circle {
-            position: relative;
+            position: absolute;
             top: 250px;
             left: 350px;
             height: 103px;
@@ -175,9 +175,10 @@ function MyApp({ Component, pageProps }) {
             background-repeat: no-repeat;
             background-position: center;
             transform: rotate(345deg);
+            transition: 0.4s linear;
           }
 
-          .jump1 {
+          /* .jump1 {
             animation: test 2s linear;
           }
 
@@ -202,7 +203,7 @@ function MyApp({ Component, pageProps }) {
               top: 250px;
               left: 350px;
             }
-          }
+          } */
 
           #main-nlo {
             position: relative;
@@ -235,20 +236,20 @@ function MyApp({ Component, pageProps }) {
           #enemy {
             width: 80px;
             height: 80px;
-            position: relative;
+            position: absolute;
             top: 160px;
             left: 970px;
 
             background-image: url('./vrag1.gif');
             background-size: 80px 80px;
 
-            animation: block 5s 5s 1 linear, block 4s 11s 1 linear,
+            /* animation: block 5s 5s 1 linear, block 4s 11s 1 linear,
               block 3s 17s 1 linear, block 2s 26s 1 linear,
               block 1s 32s 1 linear, block 5s 38s 1 linear,
-              block 5s 44s 1 linear, block 5s 50s infinite linear;
+              block 5s 44s 1 linear, block 5s 50s infinite linear; */
           }
 
-          @keyframes block {
+          /* @keyframes block {
             0% {
               left: 970px;
             }
@@ -256,7 +257,7 @@ function MyApp({ Component, pageProps }) {
             100% {
               left: 20px;
             }
-          }
+          } */
 
           // end game **********************************
           .container {

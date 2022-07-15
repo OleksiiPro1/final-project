@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { css } from '@emotion/react';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const score = css`
   margin-top: -590px;
@@ -41,43 +41,65 @@ const mainStyle = css`
 `;
 
 export default function Game() {
-  // const circle = document.getElementById('circle');
-  // const enemy = document.getElementById('enemy');
-  // let isAlive = setInterval(function () {
-  //   console.log(isAlive);
-  //   let circleTop = parseInt(
-  //     window.getComputedStyle(circle).getPropertyValue('top'),
-  //   );
-  //   let enemyLeft = parseInt(
-  //     window.getComputedStyle(enemy).getPropertyValue('left'),
-  //   );
-  //   if (enemyLeft < 50 && enemyLeft > 0 && circleTop >= 250) {
-  //     alert('Game Over!');
-  //   }
-  // }, 10);
-
+  const [circleCords, setCircleCords] = useState({ x: 350, y: 250 });
+  const [enemyCords, setEnemyCords] = useState({ x: 970, y: 250 });
   const [count, setCount] = useState(0);
   const [keyPressed, setKeyPressed] = useState(false);
+  useEffect(() => {
+    let x = 970;
+    setInterval(() => {
+      if (x < 0) {
+        x = 970;
+      }
+      x -= 10;
+      console.log(enemyCords);
+      setEnemyCords({ ...enemyCords, x });
+    }, 25);
+  }, []);
+  useEffect(() => {
+    if (
+      Math.abs(enemyCords.x - circleCords.x) < 120 &&
+      circleCords.y === enemyCords.y
+    ) {
+      alert('Game over!');
+      setEnemyCords({ x: 970, y: 250 });
+    }
+  }, [enemyCords.x]);
+  const jump = () => {
+    const jumpCords = [
+      { x: 350, y: 250 },
+      { x: 350, y: 190 },
+      { x: 350, y: 150 },
+      { x: 350, y: 190 },
+      { x: 350, y: 250 },
+    ];
+    setCircleCords(jumpCords[0]);
+    let i = 1;
+    const Interval = setInterval(() => {
+      setCircleCords(jumpCords[i]);
+      i++;
+      if (i === jumpCords.length) {
+        clearInterval(Interval);
+      }
+    }, 400);
+  };
+  const boardClick = () => {
+    jump();
+    setCount(count + 1);
+  };
 
   return (
-    <div
-      css={bgStyle}
-      onClick={() => {
-        setKeyPressed(true);
-        setTimeout(() => setKeyPressed(false), 2000);
-      }}
-      onClick={() => setCount(count + 1)}
-    >
+    <div css={bgStyle} onClick={boardClick}>
       <div css={gameStyle2}>
         {/* <Image src="/space-bg.gif" width="820px" height="461px" alt="courses" /> */}
       </div>
       <div css={gameStyle}>
-        <Image
+        {/* <Image
           src="/psp-2000.png"
           width="1600px"
           height="700px"
           alt="courses"
-        />
+        /> */}
         <p css={score}>Score: {count}</p>
       </div>
       <div
@@ -88,10 +110,15 @@ export default function Game() {
         }}
       >
         <div
+          style={{ left: circleCords.x, top: circleCords.y }}
           css={mainUnitStyle}
-          className={`circle ${keyPressed ? 'jump1' : ''}`}
+          className={'circle'}
         />
-        <div css={unitStyle2} id="enemy" />
+        <div
+          style={{ left: enemyCords.x, top: enemyCords.y }}
+          css={unitStyle2}
+          id="enemy"
+        />
         <div css={unitStyle} id="meteor" />
         <div css={unitStyle} id="meteor2" />
         <div css={unitStyle} id="main-nlo" />
