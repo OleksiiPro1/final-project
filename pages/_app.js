@@ -59,7 +59,7 @@ function MyApp({ Component, pageProps }) {
             width: 4px;
             height: 2px;
             position: relative;
-            top: 330px;
+            top: 370px;
             left: 1200px;
             background-color: white;
             background-size: 4px 2px;
@@ -143,13 +143,13 @@ function MyApp({ Component, pageProps }) {
             width: 40px;
             height: 40px;
             position: relative;
-            top: 60px;
+            top: 350px;
             left: 1200px;
 
             background-image: url('./meteor.gif');
             background-size: 40px 40px;
 
-            animation: block 12s 10s 1 linear;
+            animation: block 20s 1s 40 linear;
           }
 
           @keyframes block {
@@ -162,7 +162,7 @@ function MyApp({ Component, pageProps }) {
             }
           }
 
-          .circle {
+          .cat {
             position: absolute;
             top: 250px;
             left: 350px;

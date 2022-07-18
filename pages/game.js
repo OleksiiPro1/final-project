@@ -12,7 +12,6 @@ const mainUnitStyle = css`
 const unitStyle2 = css`
   z-index: 5;
 `;
-
 const unitStyle = css`
   z-index: 5;
 `;
@@ -42,7 +41,7 @@ const mainStyle = css`
 `;
 
 export default function Game() {
-  const [circleCords, setCircleCords] = useState({ x: 350, y: 250 });
+  const [catCords, setCatCords] = useState({ x: 350, y: 250 });
   const [enemyCords, setEnemyCords] = useState({ x: 1070, y: 250 });
   const [count, setCount] = useState(0);
   const [keyPressed, setKeyPressed] = useState(false);
@@ -59,8 +58,8 @@ export default function Game() {
   }, []);
   useEffect(() => {
     if (
-      Math.abs(enemyCords.x - circleCords.x) < 100 &&
-      circleCords.y === enemyCords.y
+      Math.abs(enemyCords.x - catCords.x) < 100 &&
+      catCords.y === enemyCords.y
     ) {
       window.location.href = 'http://localhost:3000/gamestart';
       alert('Game over!');
@@ -70,15 +69,15 @@ export default function Game() {
   const jump = () => {
     const jumpCords = [
       { x: 350, y: 250 },
-      { x: 350, y: 150 },
-      { x: 350, y: 50 },
-      { x: 350, y: 150 },
+      { x: 350, y: 120 },
+      { x: 350, y: 110 },
+      { x: 350, y: 120 },
       { x: 350, y: 250 },
     ];
-    setCircleCords(jumpCords[0]);
+    setCatCords(jumpCords[1]);
     let i = 1;
     const Interval = setInterval(() => {
-      setCircleCords(jumpCords[i]);
+      setCatCords(jumpCords[i]);
       i++;
       if (i === jumpCords.length) {
         clearInterval(Interval);
@@ -112,9 +111,9 @@ export default function Game() {
         // }}
       >
         <div
-          style={{ left: circleCords.x, top: circleCords.y }}
+          style={{ left: catCords.x, top: catCords.y }}
           css={mainUnitStyle}
-          className={'circle'}
+          className={'cat'}
         />
         <div
           style={{ left: enemyCords.x, top: enemyCords.y }}

@@ -152,9 +152,15 @@ export default function UserDetail(props: props) {
           </ul>
           <br />
           <br />
+
+          <hr />
           <br />
+
+          <h3>
+            At the end of the course you will have completed sites and games.
+          </h3>
           <ul>
-            At the end of the course you will have completed sites and games
+            Examples:
             <li>
               <Link href="http://localhost:3000">Site</Link>
             </li>
