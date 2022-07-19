@@ -140,14 +140,14 @@ function MyApp({ Component, pageProps }) {
           }
 
           #meteor {
-            width: 40px;
-            height: 40px;
+            width: 80px;
+            height: 80px;
             position: relative;
             top: 350px;
             left: 1200px;
 
             background-image: url('./meteor.gif');
-            background-size: 40px 40px;
+            background-size: 80px 80px;
 
             animation: block 20s 1s 40 linear;
           }

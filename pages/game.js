@@ -3,6 +3,9 @@ import { css } from '@emotion/react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
+// import useSound from 'use-sound';
+// import music from '../public/music.mp3';
+
 const score = css`
   margin-top: -600px;
 `;
@@ -61,7 +64,7 @@ export default function Game() {
       Math.abs(enemyCords.x - catCords.x) < 100 &&
       catCords.y === enemyCords.y
     ) {
-      window.location.href = 'http://localhost:3000/gamestart';
+      window.location.href = './gamestart';
       alert('Game over!');
       setEnemyCords({ x: 1070, y: 250 });
     }
@@ -88,8 +91,14 @@ export default function Game() {
     jump();
     setCount(count + 1);
   };
+  // const BoopButton = () => {
+  //   const [play] = useSound(music);
+
+  // return <button onClick={play}>Boop!</button>;
+  // };
 
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div css={bgStyle} onClick={boardClick}>
       <div css={gameStyle2}>
         {/* <Image src="/space-bg.gif" width="820px" height="461px" alt="courses" /> */}
