@@ -129,7 +129,7 @@ export default function Game() {
           css={unitStyle2}
           id="enemy"
         />
-        <div css={unitStyle} id="meteor" />
+
         <div css={unitStyle} id="rocket" />
         <div css={unitStyle} id="main-nlo" />
         <div css={unitStyle} id="dim-nlo" />
@@ -138,6 +138,7 @@ export default function Game() {
         <div css={unitStyle} id="star3" />
         <div css={unitStyle} id="star4" />
         <div css={unitStyle} id="star5" />
+        <div css={unitStyle} id="meteor" />
       </div>
       <br />
       <br />

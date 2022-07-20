@@ -22,7 +22,13 @@ function Tut() {
 
   return (
     <div>
-      <button css={buttonStyle} onClick={() => sound.play()}>
+      <button
+        css={buttonStyle}
+        onClick={() => {
+          sound.stop();
+          sound.play();
+        }}
+      >
         Sound on
       </button>
       <button css={buttonStyle} onClick={() => sound.pause()}>

@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }) {
             width: 2px;
             height: 2px;
             position: relative;
-            top: -80px;
+            top: -230px;
             left: 1200px;
             background-color: white;
             background-size: 2px 2px;
@@ -56,10 +56,10 @@ function MyApp({ Component, pageProps }) {
             }
           }
           #star2 {
-            width: 4px;
+            width: 2px;
             height: 2px;
             position: relative;
-            top: 270px;
+            top: -100px;
             left: 1200px;
             background-color: white;
             background-size: 4px 2px;
@@ -80,7 +80,7 @@ function MyApp({ Component, pageProps }) {
             width: 4px;
             height: 2px;
             position: relative;
-            top: 70px;
+            top: -50px;
             left: 1200px;
             background-color: white;
             background-size: 4px 2px;
@@ -101,7 +101,7 @@ function MyApp({ Component, pageProps }) {
             width: 4px;
             height: 2px;
             position: relative;
-            top: 220px;
+            top: 80px;
             left: 1200px;
             background-color: white;
             background-size: 4px 2px;
@@ -122,7 +122,7 @@ function MyApp({ Component, pageProps }) {
             width: 4px;
             height: 2px;
             position: relative;
-            top: 160px;
+            top: 150px;
             left: 1200px;
             background-color: white;
             background-size: 4px 2px;
@@ -140,40 +140,32 @@ function MyApp({ Component, pageProps }) {
           }
 
           #rocket {
-            width: 80px;
-            height: 80px;
+            width: 150px;
+            height: 150px;
             position: relative;
-            top: 150px;
+            top: 250px;
             left: 1200px;
 
             background-image: url('./rocket.gif');
-            background-size: 80px 80px;
+            background-size: 150px 150px;
             transform: rotate(270deg);
-            animation: block 1s 4.7s 1 linear, block 1s 12.8s 1 linear,
-              block 1s 26.8s 1 linear, block 1s 126.8s 1 linear;
-          }
-
-          @keyframes block {
-            0% {
-              left: 1200px;
-            }
-
-            100% {
-              left: 20px;
-            }
+            animation: block 1.8s 5.7s 1 linear, block 1.5s 21.8s 1 linear,
+              block 1.8s 39.8s 1 linear, block 1.8s 55.8s 1 linear,
+              block 1.8s 72.8s 1 linear, block 1.8s 92.8s 1 linear,
+              block 1.8s 112.8s 1 linear, block 1.8s 196.8s 1 linear;
           }
 
           #meteor {
-            width: 80px;
-            height: 80px;
-            position: relative;
+            width: 300px;
+            height: 300px;
+            position: absolute;
             top: 350px;
             left: 1200px;
 
             background-image: url('./meteor.gif');
-            background-size: 80px 80px;
+            background-size: 300px 300px;
 
-            animation: block 20s 1s 40 linear;
+            animation: block 60s 1s 40 linear;
           }
 
           @keyframes block {
