@@ -45,7 +45,7 @@ export default function Header(props) {
       </div>
 
       <div className="menu">
-        <Link href="/courses/1">HTML</Link>
+        {/* <Link href="/courses/1">HTML</Link> */}
         <Link href="/courses/2">CSS</Link>
         <Link href="/courses/3">JAVASCRIPT</Link>
         <Link href="/courses/4">REACT</Link>
