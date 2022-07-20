@@ -39,11 +39,11 @@ function MyApp({ Component, pageProps }) {
             width: 2px;
             height: 2px;
             position: relative;
-            top: 50px;
+            top: -80px;
             left: 1200px;
             background-color: white;
             background-size: 2px 2px;
-            animation: block 2s 0.4s infinite linear;
+            animation: block 1.7s 0.1s infinite linear;
           }
 
           @keyframes block {
@@ -59,7 +59,7 @@ function MyApp({ Component, pageProps }) {
             width: 4px;
             height: 2px;
             position: relative;
-            top: 370px;
+            top: 270px;
             left: 1200px;
             background-color: white;
             background-size: 4px 2px;
@@ -84,7 +84,7 @@ function MyApp({ Component, pageProps }) {
             left: 1200px;
             background-color: white;
             background-size: 4px 2px;
-            animation: block 1.3s 0.6s infinite linear;
+            animation: block 1.2s 0.6s infinite linear;
           }
 
           @keyframes block {
@@ -136,6 +136,30 @@ function MyApp({ Component, pageProps }) {
 
             100% {
               left: -20px;
+            }
+          }
+
+          #rocket {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            top: 150px;
+            left: 1200px;
+
+            background-image: url('./rocket.gif');
+            background-size: 80px 80px;
+            transform: rotate(270deg);
+            animation: block 1s 4.7s 1 linear, block 1s 12.8s 1 linear,
+              block 1s 26.8s 1 linear, block 1s 126.8s 1 linear;
+          }
+
+          @keyframes block {
+            0% {
+              left: 1200px;
+            }
+
+            100% {
+              left: 20px;
             }
           }
 
@@ -218,6 +242,7 @@ function MyApp({ Component, pageProps }) {
             background-repeat: no-repeat;
             background-position: center;
           }
+
           #dim-nlo {
             position: absolute;
             top: 60px;

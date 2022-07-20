@@ -130,7 +130,7 @@ export default function Game() {
           id="enemy"
         />
         <div css={unitStyle} id="meteor" />
-        <div css={unitStyle} id="meteor2" />
+        <div css={unitStyle} id="rocket" />
         <div css={unitStyle} id="main-nlo" />
         <div css={unitStyle} id="dim-nlo" />
         <div css={unitStyle} id="star" />
