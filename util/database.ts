@@ -2,6 +2,10 @@ import camelcaseKeys from 'camelcase-keys';
 import { config } from 'dotenv-safe';
 import postgres from 'postgres';
 
+// import setPostgresDefaultsOnHeroku from './setPostgresDefaultsOnHeroku';
+
+// setPostgresDefaultsOnHeroku();
+
 config();
 
 // Type needed for the connection function below
@@ -72,7 +76,7 @@ export type User = {
   username: string;
 };
 
-type  getUserWithPasswordHash = User & {
+type getUserWithPasswordHash = User & {
   passwordHash: string;
 };
 

@@ -155,6 +155,31 @@ function MyApp({ Component, pageProps }) {
               block 1.8s 112.8s 1 linear, block 1.8s 196.8s 1 linear;
           }
 
+          #bug {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 400px;
+            left: 1200px;
+
+            background-image: url('./bug.gif');
+            background-size: 100px 100px;
+
+            animation: block 8s 1s 1 linear;
+          }
+          #game-bug {
+            width: 156px;
+            height: 95px;
+            position: absolute;
+            top: 350px;
+            left: 1200px;
+
+            background-image: url('./game-bug.png');
+            background-size: 156px 95px;
+
+            animation: block 8s 1s 1 linear;
+          }
+
           #meteor {
             width: 300px;
             height: 300px;

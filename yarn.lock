@@ -1202,7 +1202,7 @@
 
 "@emotion/react@^11.9.3":
   version "11.9.3"
-  resolved "https://registry.npmjs.org/@emotion/react/-/react-11.9.3.tgz"
+  resolved "https://registry.yarnpkg.com/@emotion/react/-/react-11.9.3.tgz#f4f4f34444f6654a2e550f5dab4f2d360c101df9"
   integrity sha512-g9Q1GcTOlzOEjqwuLF/Zd9LC+4FljjPjDfxSM7KmEakm+hsHXk+bYZ2q+/hTJzr0OUNkujo72pXLQvXj6H+GJQ==
   dependencies:
     "@babel/runtime" "^7.13.10"

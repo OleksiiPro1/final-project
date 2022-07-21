@@ -71,11 +71,12 @@ export default function Game() {
   }, [enemyCords.x]);
   const jump = () => {
     const jumpCords = [
-      { x: 350, y: 250 },
-      { x: 350, y: 120 },
-      { x: 350, y: 110 },
-      { x: 350, y: 120 },
-      { x: 350, y: 250 },
+      { x: 400, y: 250 },
+      { x: 400, y: 120 },
+      { x: 400, y: 110 },
+      { x: 400, y: 120 },
+      { x: 400, y: 250 },
+      { x: 400, y: 250 },
     ];
     setCatCords(jumpCords[1]);
     let i = 1;
@@ -139,6 +140,8 @@ export default function Game() {
         <div css={unitStyle} id="star4" />
         <div css={unitStyle} id="star5" />
         <div css={unitStyle} id="meteor" />
+        <div css={unitStyle} id="bug" />
+        <div css={unitStyle} id="game-bug" />
       </div>
       <br />
       <br />
