@@ -1,4 +1,4 @@
-module.exports = function setPostgresDefaultsOnHeroku() {
+module.exports = function () {
   if (process.env.DATABASE_URL) {
     // Install pg-connection-string
     const { parse } = require('pg-connection-string');
