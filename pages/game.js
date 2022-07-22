@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -21,6 +20,7 @@ const unitStyle = css`
 const bgStyle = css`
   cursor: crosshair;
   background-color: black;
+  border: none;
   text-align: center;
 `;
 const gameStyle = css`
@@ -99,8 +99,7 @@ export default function Game() {
   // };
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-    <div css={bgStyle} onClick={boardClick}>
+    <button css={bgStyle} onClick={boardClick}>
       <div css={gameStyle2}>
         {/* <Image src="/space-bg.gif" width="820px" height="461px" alt="courses" /> */}
       </div>
@@ -168,6 +167,6 @@ export default function Game() {
       <br />
       <br />
       <br />
-    </div>
+    </button>
   );
 }

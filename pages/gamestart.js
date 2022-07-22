@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import Link from 'next/link';
