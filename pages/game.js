@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 // import music from '../public/music.mp3';
 
 const score = css`
-  margin-top: -580px;
+  margin-top: -600px;
 `;
 const mainUnitStyle = css`
   z-index: 6;
