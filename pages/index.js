@@ -112,6 +112,7 @@ const imgContainer2 = css`
   left: 80%;
   transform: translate(-50%, -59%);
   animation: animate 4s infinite ease-in-out;
+
   width: 350px;
   max-width: 1200px;
 `;
@@ -119,8 +120,8 @@ const imgContainer = css`
   position: absolute;
   top: 250px;
   left: 20%;
-  transform: translate(-50%, -55%);
-  animation: animate 5s infinite ease-in-out;
+  transform: translate(-50%, -255%);
+  animation: animate2 20s infinite ease-in-out;
   width: 500px;
   max-width: 1200px;
 `;
@@ -132,6 +133,18 @@ const mainContentDiv = css`
       transform: translate(-50%, -48%);
     }
     100% {
+    }
+  }
+
+  @keyframes animate2 {
+    0% {
+      transform: translate(-50%, -180%);
+    }
+    50% {
+      transform: translate(-50%, -48%);
+    }
+    100% {
+      transform: translate(-70000%, 9999%);
     }
   }
 `;

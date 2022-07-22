@@ -19,7 +19,7 @@ const mainVideoDiv = css`
 `;
 const bgStyle = css`
   background-color: black;
-  text-align: center;
+  /* text-align: center; */
 `;
 const gameStyle = css`
   cursor: crosshair;

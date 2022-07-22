@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 // import music from '../public/music.mp3';
 
 const score = css`
-  margin-top: -600px;
+  margin-top: -580px;
 `;
 const mainUnitStyle = css`
   z-index: 6;
@@ -21,7 +21,7 @@ const bgStyle = css`
   cursor: crosshair;
   background-color: black;
   border: none;
-  text-align: center;
+  /* text-align: center; */
 `;
 const gameStyle = css`
   min-width: 100%;
