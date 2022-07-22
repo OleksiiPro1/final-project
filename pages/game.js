@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 
 const score = css`
   margin-top: -600px;
+  margin-left: 700px;
 `;
 const mainUnitStyle = css`
   z-index: 6;
