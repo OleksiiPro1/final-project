@@ -7,10 +7,10 @@ price VARCHAR(40) NOT NULL,
 description VARCHAR(240) NOT NULL
 )
 `;
-}
+};
 
 exports.down = async (sql) => {
   await sql`
   DROP TABLE courses
   `;
-}
+};

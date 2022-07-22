@@ -22,13 +22,13 @@ const styleButton = css`
   padding-right: 1px;
 `;
 const regStyle = css`
-color: gray ;
-cursor: default;
+  color: gray;
+  cursor: default;
 `;
 const reg2Style = css`
-color: grey;
-cursor: pointer;
-text-decoration: underline;
+  color: grey;
+  cursor: pointer;
+  text-decoration: underline;
 `;
 const mainHeightStyle = css`
   min-height: 100vh;
@@ -120,7 +120,8 @@ export default function Login(props: Props) {
               {'  '}
             </label>
             <label>
-            {' '}Password:{' '}
+              {' '}
+              Password:{' '}
               <input
                 type="password"
                 value={password}
@@ -130,8 +131,9 @@ export default function Login(props: Props) {
               />
               {'  '}
             </label>
-            <button css={styleButton} onClick={() => loginHundler()}>Login</button>
-
+            <button css={styleButton} onClick={() => loginHundler()}>
+              Login
+            </button>
 
             {/* {errors.length && */}
             {errors.map((error) => (
@@ -140,11 +142,13 @@ export default function Login(props: Props) {
               </span>
             ))}
 
-<div css={regStyle}>
-                  <br />
-                  Not Registered? <Link href="/register"><a css={reg2Style}>Create an account</a></Link>
-                </div>
-
+            <div css={regStyle}>
+              <br />
+              Not Registered?{' '}
+              <Link href="/register">
+                <a css={reg2Style}>Create an account</a>
+              </Link>
+            </div>
           </div>
         </main>
       </div>

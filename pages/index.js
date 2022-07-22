@@ -11,6 +11,7 @@ const main3Text = css`
   margin-right: 100px;
   color: white;
 `;
+
 const main4Text = css`
   margin-left: 100px;
   margin-right: 100px;

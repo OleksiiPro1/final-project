@@ -14,20 +14,17 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<RegisterResponseBody>,
 ) {
-
-
-
   if (req.method === 'POST') {
-
-    if(
-      (typeof req.body.username !== 'string') ||
-    (typeof req.body.password !== 'string') ||
-    !req.body.username ||
-    !req.body.password
-
+    if (
+      typeof req.body.username !== 'string' ||
+      typeof req.body.password !== 'string' ||
+      !req.body.username ||
+      !req.body.password
     ) {
-      res.status(400).json({ errors: [{ message: 'User name or password not provided' }] });
-        return;
+      res
+        .status(400)
+        .json({ errors: [{ message: 'User name or password not provided' }] });
+      return;
     }
 
     if (await getUserByUsername(req.body.username)) {

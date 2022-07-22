@@ -9,14 +9,14 @@ import { getParsedCookie, setStringifiedCookie } from '../../util/cookies';
 import { getCourse } from '../../util/database';
 
 const mainDivOfThePage = css`
-padding-top: 90px;
+  padding-top: 90px;
 `;
 const h1Courses = css`
-margin-top: -430px;
-margin-bottom: 380px;
-margin-left: 60px;
-position: absolute;
-z-index: 5;
+  margin-top: -430px;
+  margin-bottom: 380px;
+  margin-left: 60px;
+  position: absolute;
+  z-index: 5;
 `;
 const buttonDiv = css`
   margin-top: 20px;
@@ -152,7 +152,6 @@ export default function Mission(props) {
               setStringifiedCookie('cart', newCart);
             }}
             css={buttonContent}
-
           >
             {isInCart ? 'remove from cart' : 'add to cart'}
           </button>
@@ -180,7 +179,9 @@ export default function Mission(props) {
                 >
                   add student
                 </button> */}
-                <Link href="/cart"><button css={buttonContent}>Go to cart 🛒</button></Link>
+                <Link href="/cart">
+                  <button css={buttonContent}>Go to cart 🛒</button>
+                </Link>
               </div>
             </>
           ) : (

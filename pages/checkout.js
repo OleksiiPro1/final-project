@@ -15,24 +15,26 @@ const styleButtons = css`
   padding: 8px;
 `;
 const mainCatStyle = css`
-margin-top: -600px;
+  margin-top: -600px;
 
-z-index: -1;
+  z-index: -1;
 `;
-const inputs =css`
-margin-left: 15px;
+const inputs = css`
+  margin-left: 15px;
 `;
-const mainDiv =css`
-color: white;
-margin-left: 60px;
-margin-bottom: 100px;
-text-align: center;
-padding-top: 90px;
+const mainDiv = css`
+  color: white;
+  margin-left: 60px;
+  margin-bottom: 100px;
+  text-align: center;
+  padding-top: 90px;
 `;
 export default function About(props) {
-
   const [coursesInCart, setCoursesInCart] = useState(props.courses);
-  const totalPrice = coursesInCart.reduce((sum, item) => sum + Number(item.price), 0);
+  const totalPrice = coursesInCart.reduce(
+    (sum, item) => sum + Number(item.price),
+    0,
+  );
   return (
     <div>
       <Head>
@@ -44,35 +46,34 @@ export default function About(props) {
         <div css={mainDiv}>
           <div className="checkoutInfo">
             <h1>Welcome to checkout</h1>
-
-
           </div>
           <div className="checkoutFormWrapper">
-            <form className="checkoutForm" >
+            <form className="checkoutForm">
               <div className="personalDetails">
                 <h3> Personal Details</h3>
                 <label>
-
                   <input
-                  css={inputs}
+                    css={inputs}
                     placeholder="First Name"
                     data-test-id="checkout-first-name"
                     required
                   />
                 </label>
-                <br /><br />
+                <br />
+                <br />
                 <label>
-
-                  <input css={inputs}
+                  <input
+                    css={inputs}
                     placeholder="Last Name"
                     data-test-id="checkout-last-name"
                     required
                   />
                 </label>
-                <br /><br />
+                <br />
+                <br />
                 <label>
-
-                  <input css={inputs}
+                  <input
+                    css={inputs}
                     placeholder="email (email@example.com)"
                     data-test-id="checkout-email"
                     type="E-Mail"
@@ -81,11 +82,12 @@ export default function About(props) {
                 </label>
               </div>
               <div className="shippingDetails">
-              <br /><br />
+                <br />
+                <br />
                 <h3> Payment Information</h3>
                 <label>
-
-                  <input css={inputs}
+                  <input
+                    css={inputs}
                     placeholder="Credit Card №"
                     data-test-id="checkout-credit-card"
                     type="number"
@@ -93,10 +95,11 @@ export default function About(props) {
                     maxLength="12"
                   />
                 </label>
-                <br /><br />
+                <br />
+                <br />
                 <label>
-
-                  <input css={inputs}
+                  <input
+                    css={inputs}
                     data-test-id="checkout-expiration-date"
                     type="number"
                     maxLength="4"
@@ -104,10 +107,11 @@ export default function About(props) {
                     required
                   />
                 </label>
-                <br /><br />
+                <br />
+                <br />
                 <label>
-
-                  <input css={inputs}
+                  <input
+                    css={inputs}
                     placeholder="Security Code (123)"
                     maxLength="3"
                     data-test-id="checkout-security-code"
@@ -116,10 +120,12 @@ export default function About(props) {
                   />
                 </label>
               </div>
-              <br /><br />
+              <br />
+              <br />
               <h4>Total price: ${totalPrice}</h4>
 
-              <button css={styleButtons}
+              <button
+                css={styleButtons}
                 data-test-id="checkout-confirm-order"
                 className="checkoutConfirm"
               >
@@ -129,13 +135,12 @@ export default function About(props) {
           </div>
         </div>
         <div css={mainCatStyle}>
-        <Image
-          src="/login_cosmo_cat.png"
-
-          width="457px"
-          height="466px"
-          alt="courses"
-        />
+          <Image
+            src="/login_cosmo_cat.png"
+            width="457px"
+            height="466px"
+            alt="courses"
+          />
         </div>
       </main>
     </div>
@@ -148,9 +153,9 @@ export async function getServerSideProps(context) {
     const itemFound = courses.find((course) => course.id === item.id);
     return { ...itemFound, quantity: item.quantity || 1 };
   });
-return {
-  props: {
-    courses: courseInCart,
-  },
-}
+  return {
+    props: {
+      courses: courseInCart,
+    },
+  };
 }

@@ -7,19 +7,17 @@ type props = {
 };
 
 export default function UserDetail(props: props) {
-
-  if(!props.user) {
+  if (!props.user) {
     return (
-    <>
-    <Head>
+      <>
+        <Head>
           <title>User not found</title>
           <meta name="description" content="User not found" />
         </Head>
         <h1>404 - User not found</h1>
         Better luck next time
-
-        </>
-  );
+      </>
+    );
   }
 
   return (
@@ -30,33 +28,35 @@ export default function UserDetail(props: props) {
       </Head>
 
       <main>
-        <h1>User #{props.user.id} (username: {props.user.username})</h1>
+        <h1>
+          User #{props.user.id} (username: {props.user.username})
+        </h1>
         <div>id: {props.user.id}</div>
         <div>username: {props.user.username}</div>
       </main>
-        </div>
+    </div>
   );
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const userIdFromUrl = context.query.userId;
 
-if(!userIdFromUrl || Array.isArray(userIdFromUrl)) {
-  return {props: {} };
-}
+  if (!userIdFromUrl || Array.isArray(userIdFromUrl)) {
+    return { props: {} };
+  }
 
   const user = await getUserById(parseInt(userIdFromUrl));
 
-console.log(user);
+  console.log(user);
 
-if(!user) {
-context.res.statusCode = 404;
-return   {props: {} };
-}
+  if (!user) {
+    context.res.statusCode = 404;
+    return { props: {} };
+  }
 
   return {
     props: {
-    user: user,
-}
-  }
+      user: user,
+    },
+  };
 }

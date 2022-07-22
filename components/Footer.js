@@ -35,7 +35,7 @@ export default function Footer() {
   return (
     <footer>
       <div css={footerDivStyles}>
-        <div >
+        <div>
           <div css={footerLinksStyles}>
             <ul css={ulText}>
               <Link href="/courses/1">

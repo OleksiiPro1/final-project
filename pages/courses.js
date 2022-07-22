@@ -16,20 +16,20 @@ export default function Courses(props) {
       <div>
         {props.mission.map((mission) => {
           return (
-          <div key={` mission-${mission.id}`}>
-<div>planet: {mission.planet}</div>
-<div>price:  {mission.price}</div>
-<div>description:  {mission.description}</div>
-</div>);
-        })
-      }
+            <div key={` mission-${mission.id}`}>
+              <div>planet: {mission.planet}</div>
+              <div>price: {mission.price}</div>
+              <div>description: {mission.description}</div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
 }
 
 export async function getServerSideProps() {
-const courses = await getCourses();
+  const courses = await getCourses();
   return {
     props: {
       mission: courses,

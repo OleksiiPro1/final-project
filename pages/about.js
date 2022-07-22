@@ -16,24 +16,20 @@ export default function About() {
   );
 }
 export async function getServerSideProps(context) {
+  const user = await getUserByValidSessionToken(
+    context.req.cookies.sessionToken,
+  );
 
-
-  const user = await getUserByValidSessionToken(context.req.cookies.sessionToken,
-    );
-
-
-
-if(user) {
-
-return   {
-  props: {}
- };
-}
+  if (user) {
+    return {
+      props: {},
+    };
+  }
 
   return {
     redirect: {
-    destination: '/login?returnTo=/about',
-    permanent: false,
-}
-  }
+      destination: '/login?returnTo=/about',
+      permanent: false,
+    },
+  };
 }

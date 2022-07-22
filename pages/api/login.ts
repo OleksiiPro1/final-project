@@ -33,13 +33,11 @@ export default async function handler(
     }
     const userWithPasswordHashUseWithCaution =
       await getUserWithPasswordHashUsername(req.body.username);
-      
+
     if (!userWithPasswordHashUseWithCaution) {
-      res
-        .status(401)
-        .json({
-          errors: [{ message: 'User not found or password is wrong ' }],
-        });
+      res.status(401).json({
+        errors: [{ message: 'User not found or password is wrong ' }],
+      });
       return;
     }
 
@@ -49,24 +47,24 @@ export default async function handler(
     );
 
     if (!passwordMatches) {
-      res
-        .status(401)
-        .json({
-          errors: [{ message: 'Password is wrong or user not found ' }],
-        });
+      res.status(401).json({
+        errors: [{ message: 'Password is wrong or user not found ' }],
+      });
       return;
     }
     const userId = userWithPasswordHashUseWithCaution.id;
 
+    const token = crypto.randomBytes(80).toString('base64');
+    const session = await createSession(token, userId);
+    // console.log(session);
+    const serializedCookie = await createSerializedRegisterSessionTokenCookie(
+      session.token,
+    );
 
-  const token = crypto.randomBytes(80).toString('base64');
-  const session = await createSession(token, userId);
-  // console.log(session);
-  const serializedCookie = await createSerializedRegisterSessionTokenCookie(
-    session.token,
-  );
-
-    res.status(200).setHeader('set-Cookie', serializedCookie).json({ user: { id: userId } });
+    res
+      .status(200)
+      .setHeader('set-Cookie', serializedCookie)
+      .json({ user: { id: userId } });
   } else {
     res.status(405).json({ errors: [{ message: 'method not allowed' }] });
   }
