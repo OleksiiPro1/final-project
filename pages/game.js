@@ -99,7 +99,7 @@ export default function Game() {
   // };
 
   return (
-    <button css={bgStyle} onClick={boardClick}>
+    <div css={bgStyle} onClick={boardClick}>
       <div css={gameStyle2}>
         {/* <Image src="/space-bg.gif" width="820px" height="461px" alt="courses" /> */}
       </div>
@@ -167,6 +167,6 @@ export default function Game() {
       <br />
       <br />
       <br />
-    </button>
+    </div>
   );
 }
