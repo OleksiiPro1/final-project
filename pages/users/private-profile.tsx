@@ -162,10 +162,10 @@ export default function UserDetail(props: props) {
           <ul>
             Examples:
             <li>
-              <Link href="http://localhost:3000">Site</Link>
+              <Link href="/">Site</Link>
             </li>
             <li>
-              <Link href="http://localhost:3000/gamestart">Game</Link>
+              <Link href="/gamestart">Game</Link>
             </li>
           </ul>
         </main>
